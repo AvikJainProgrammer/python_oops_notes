@@ -1,0 +1,51 @@
+questions:
+  - question_id: 1
+    question_type: list_completion
+    question_text: "What are the basic building blocks for oops?"
+    answer: 
+      - "Creating classes and objects"
+      - "Attributes and methods"
+      - "Getter and Setter methods"
+      - "Properties"
+      - "Static attributes and methods"
+      - "Public, protected and private access modifiers"
+      - "Abstract classes"
+    case_sensitive: true
+    order_sensitive: false
+  - question_id: 2
+    question_type: list_completion
+    question_text: "What are the concepts to learn after learning the building blocks of OOPs?"
+    answer: 
+      - "Encapsulation"
+      - "Abstraction"
+      - "Inheritance"
+      - "Polymorphism"
+      - "Coupling"
+      - "Composition"
+      - "Fragile-base class problem"
+      - "Dependency Injection"
+    case_sensitive: true
+    order_sensitive: false
+  - question_id: 3
+    question_type: list_completion
+    question_text: "List the solid s of OOPs."
+    answer: 
+      - "Single Responsibility"
+      - "Open/closed"
+      - "Liskov Substitution"
+      - "Interface Segregation"
+      - "Dependency Inversion"
+    case_sensitive: true
+    order_sensitive: false
+  - question_id: 4
+    question_type: list_completion
+    question_text: "List the design patterns we will study in OOPs."
+    answer: 
+      - "State Pattern"
+      - "Observer Pattern"
+      - "Facade Pattern"
+      - "Adapter Pattern"
+      - "Prototype Pattern"
+      - "Abstract Factory Pattern"
+    case_sensitive: true
+    order_sensitive: false
