@@ -1,0 +1,1 @@
+please create notes out of this making it short but leaving nothing of substance. 
