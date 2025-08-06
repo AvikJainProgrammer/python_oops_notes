@@ -1,0 +1,182 @@
+questions:
+  - question_id: 10
+    question_type: fib
+    question_text: Everything in Python is <<an object>>.
+    case_sensitive: false
+
+  - question_id: 11
+    question_type: write_code
+    language: python
+    question_text: "Write code to prove that both an integer and a string variable are Python objects. Use the `type()` function to display their types."
+    question_code: |
+      name = "Danny"
+      age = 29
+
+      print(type(name))  # should output <class 'str'>
+      print(type(age))   # should output <class 'int'>
+    case_sensitive: false
+    guided: true
+
+  - question_id: 12
+    question_type: fib
+    question_text: Classes are <<blueprints>> for <<objects>>.
+    case_sensitive: false
+
+  - question_id: 13
+    question_type: write_code
+    language: python
+    question_text: "Create a string variable and use the `upper()` method on it to convert it to uppercase."
+    question_code: |
+      name = "Danny"
+      print(name.upper())  # Output: DANNY
+    case_sensitive: false
+    guided: true
+
+  - question_id: 14
+    question_type: write_code
+    language: python
+    question_text: |
+      Create a `Dog` class with an `__init__()` method that takes `name` and `breed` as arguments. Include a `bark()` method. Instantiate two Dog objects with different data and demonstrate calling the method and accessing the attributes, as shown in the notes.
+      Use the following: Bruce (Scottish Terrier) and Freya (Greyhound).
+    question_code: |
+      class Dog:
+          def __init__(self, name, breed):
+              self.name = name
+              self.breed = breed
+
+          def bark(self):
+              print("Woof woof")
+
+      dog1 = Dog("Bruce", "Scottish Terrier")
+      dog2 = Dog("Freya", "Greyhound")
+
+      dog1.bark()
+      print(dog1.name)
+      print(dog1.breed)
+
+      dog2.bark()
+      print(dog2.name)
+      print(dog2.breed)
+    case_sensitive: false
+    guided: true
+
+  - question_id: 14B
+    question_type: code_fib
+    language: python
+    question_text: "Fill in the missing parts to create a `Dog` class that uses an `__init__()` method and a `bark()` method. Then create two instances and demonstrate calling the method and accessing attributes."
+    question_code: |
+      # Define the Dog class
+      <<class>> Dog:
+          # Define the constructor (__init__)
+          def <<__init__>>(self, <<name>>, <<breed>>):
+              self.<<name>> = name
+              self.<<breed>> = breed
+
+          # Define the bark method
+          def <<bark>>(self):
+              print("Woof woof")
+
+      # Create two Dog objects and access their attributes
+      dog1 = <<Dog>>("Bruce", "Scottish Terrier")
+      dog2 = <<Dog>>("Freya", "Greyhound")
+
+      dog1.<<bark>>()
+      print(dog1.<<name>>)
+      print(dog1.<<breed>>)
+
+      dog2.<<bark>>()
+      print(dog2.<<name>>)
+      print(dog2.<<breed>>)
+    case_sensitive: true
+
+
+  - question_id: 15
+    question_type: qna
+    question_text: "What is a class in Python?"
+    answer: "A class is a blueprint for creating objects."
+    case_sensitive: false
+
+  - question_id: 16
+    question_type: qna
+    question_text: "What is an object in Python?"
+    answer: "An object is an instance of a class."
+    case_sensitive: false
+
+  - question_id: 17
+    question_type: qna
+    question_text: "What is the purpose of the `__init__()` method?"
+    answer: "It is a constructor method used to initialize object data."
+    case_sensitive: false
+
+  - question_id: 18
+    question_type: qna
+    question_text: "What does `self` refer to inside a class method?"
+    answer: "It refers to the current object instance."
+    case_sensitive: false
+
+  - question_id: 19
+    question_type: qna
+    question_text: "What is an attribute in Python classes?"
+    answer: "An attribute is data stored in an object, like `self.name`."
+    case_sensitive: false
+
+  - question_id: 20
+    question_type: qna
+    question_text: "What is a method in Python classes?"
+    answer: "A method is a function defined inside a class."
+    case_sensitive: false
+
+  - question_id: 21
+    question_type: qna
+    question_text: "What is dot notation used for in Python?"
+    answer: "Dot notation is used to access methods and attributes of objects."
+    case_sensitive: false
+
+  - question_id: 23
+    question_type: write_code
+    language: python
+    question_text: |
+      Create two classes:
+
+      1. `Owner` with attributes: `name`, `address`, and `phone_number`.  
+         - The `__init__` method should accept `name`, `address`, and a parameter named `contact_number` which should be assigned to the attribute `phone_number`.
+
+      2. `Dog` with attributes: `name`, `breed`, and `owner`.  
+         - The `owner` should be an instance of the `Owner` class.
+         - Include a method `bark()` that prints `"Woof woof"`.
+
+      Then:
+      - Create two `Owner` objects and two `Dog` objects, each assigned one of the owners.
+      - Print each dog's owner's name using dot notation (e.g., `dog1.owner.name`).
+      Use the following data:
+      - Owner 1: Name: Danny, Address: 122 Springfield Drive, Contact Number: 8888999
+      - Owner 2: Name: Sally, Address: 122 Springfield Drive, Contact Number: 8888999
+      - Dog 1: Name: Bruce, Breed: Scottish Terrier, Owner: Owner 1
+      - Dog 2: Name: Freya, Breed: Greyhound, Owner: Owner 2
+      Ensure the output shows the owner's name for each dog.
+    question_code: |
+      class Owner:
+          def __init__(self, name, address, contact_number):
+              self.name = name
+              self.address = address
+              self.phone_number = contact_number
+
+      class Dog:
+          def __init__(self, name, breed, owner):
+              self.name = name
+              self.breed = breed
+              self.owner = owner
+
+          def bark(self):
+              print("Woof woof")
+
+      owner1 = Owner("Danny", "122 Springfield Drive", "8888999")
+      owner2 = Owner("Sally", "122 Springfield Drive", "8888999")
+
+      dog1 = Dog("Bruce", "Scottish Terrier", owner1)
+      dog2 = Dog("Freya", "Greyhound", owner2)
+
+      print(dog1.owner.name)
+      print(dog2.owner.name)
+    case_sensitive: true
+    guided: true
