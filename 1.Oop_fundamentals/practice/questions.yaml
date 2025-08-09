@@ -180,3 +180,87 @@ questions:
       print(dog2.owner.name)
     case_sensitive: true
     guided: true
+  - question_id: 10
+    question_type: write_code
+    language: python
+    question_text: |
+      Create a `Person` class in Python with the following:
+      - An `__init__` method that accepts `name` and `age` and stores them as instance attributes.
+      - A `greet()` method that prints: `"Hello, my name is <name> and I am <age> years old."`
+
+      Then:
+      - Create **two different Person objects** with different names and ages.
+      - Call the `greet()` method on each object to demonstrate how the **same function** can behave differently for different objects of the same class.
+    question_code: |
+      class Person:
+          def __init__(self, name, age):
+              self.name = name
+              self.age = age
+
+          def greet(self):
+              print(f"Hello, my name is {self.name} and I am {self.age} years old.")
+
+      person1 = Person("Alice", 30)
+      person1.greet()
+
+      person2 = Person("Bob", 42)
+      person2.greet()
+    case_sensitive: true
+    guided: true
+  - question_id: 11
+    question_type: mcq
+    question_text: "True or False: Accessing a protected attribute in Python (e.g., `_email`) will cause an error."
+    options:
+      - "True"
+      - "False"
+    correct_answer: "False"
+
+  - question_id: 12
+    question_type: fib
+    question_text: "A protected attribute in Python is one whose name starts with a <<single underscore>>, meant for <<internal use>> only, and is a <<convention>> rather than an <<enforcement>>."
+    case_sensitive: false
+
+  - question_id: 13
+    question_type: code_fib
+    language: python
+    question_text: "Fill in the missing parts to make the `email` attribute protected in the `User` class."
+    question_code: |
+      class User:
+          def __init__(self, username, <<_email>>, password):
+              self.username = username
+              self.<<_email>> = email
+              self.password = password
+
+          def get_email(self):
+              return self.<<_email>>
+    case_sensitive: true
+
+  - question_id: 14
+    question_type: write_code
+    language: python
+    question_text: |
+      Create a `User` class in Python with:
+      - A **protected attribute** `_email` (use a single underscore before `email` in its name)
+      - Public attributes: `username` and `password`
+      - A method `get_email()` that returns the value of `_email`
+      
+      Then:
+      - Create an instance of `User` with sample values
+      - Print the value of `_email` directly (to show it works but is not recommended)
+      - Print the value of `_email` using `get_email()` (preferred way)
+    question_code: |
+      class User:
+          def __init__(self, username, email, password):
+              self.username = username
+              self._email = email
+              self.password = password
+
+          def get_email(self):
+              return self._email
+
+      user1 = User("dantheman", "dan@gmail.com", "123")
+
+      print(user1._email)       # Not recommended
+      print(user1.get_email())  # Preferred
+    case_sensitive: true
+    guided: true
