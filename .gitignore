@@ -1,0 +1,5 @@
+# Virtual environments
+myenv/
+venv/
+.env/
+env/

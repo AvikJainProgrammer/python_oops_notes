@@ -1,0 +1,712 @@
+questions:
+- question_id: 1
+  question_type: list_completion
+  question_text: List the topics studied in Python OOP fundamentals.
+  answer:
+  - Classes and Objects
+  - Attributes and Methods
+  - Combining objects
+  - protected attributes
+  - Consenting Adults philosophy
+  - Private attributes
+  - getter and setter methods
+  - '@property decorator'
+  - '@property.setter decorator'
+  - Static attributes
+  - Static methods
+  - protected methods
+  - Private methods
+  case_sensitive: false
+  order_sensitive: false
+- question_id: 2
+  question_type: fib
+  question_text: Everything in Python is <<an object>>.
+  case_sensitive: false
+- question_id: 3
+  question_type: write_code
+  language: python
+  question_text: Write code to prove that both an integer and a string variable are
+    Python objects. Use the `type()` function to display their types.
+  question_code: 'name = "Danny"
+
+    age = 29
+
+
+    print(type(name))  # should output <class ''str''>
+
+    print(type(age))   # should output <class ''int''>
+
+    '
+  case_sensitive: true
+  guided: true
+- question_id: 4
+  question_type: fib
+  question_text: Classes are <<blueprints>> for <<objects>>.
+  case_sensitive: false
+- question_id: 5
+  question_type: write_code
+  language: python
+  question_text: Create a string variable and use the `upper()` method on it to convert
+    it to uppercase.
+  question_code: 'name = "Danny"
+
+    print(name.upper())  # Output: DANNY
+
+    '
+  case_sensitive: false
+  guided: true
+- question_id: 6
+  question_type: write_code
+  language: python
+  question_text: 'Create a `Dog` class with an `__init__()` method that takes `name`
+    and `breed` as arguments. Include a `bark()` method. Instantiate two Dog objects
+    with different data and demonstrate calling the method and accessing the attributes,
+    as shown in the notes.
+
+    Use the following: Bruce (Scottish Terrier) and Freya (Greyhound).
+
+    '
+  question_code: "class Dog:\n    def __init__(self, name, breed):\n        self.name\
+    \ = name\n        self.breed = breed\n\n    def bark(self):\n        print(\"\
+    Woof woof\")\n\ndog1 = Dog(\"Bruce\", \"Scottish Terrier\")\ndog2 = Dog(\"Freya\"\
+    , \"Greyhound\")\n\ndog1.bark()\nprint(dog1.name)\nprint(dog1.breed)\n\ndog2.bark()\n\
+    print(dog2.name)\nprint(dog2.breed)\n"
+  case_sensitive: false
+  guided: true
+- question_id: 7
+  question_type: code_fib
+  language: python
+  question_text: Fill in the missing parts to create a `Dog` class that uses an `__init__()`
+    method and a `bark()` method. Then create two instances and demonstrate calling
+    the method and accessing attributes.
+  question_code: "# Define the Dog class\n<<class>> Dog:\n    # Define the constructor\
+    \ (__init__)\n    def <<__init__>>(self, <<name>>, <<breed>>):\n        self.<<name>>\
+    \ = name\n        self.<<breed>> = breed\n\n    # Define the bark method\n   \
+    \ def <<bark>>(self):\n        print(\"Woof woof\")\n\n# Create two Dog objects\
+    \ and access their attributes\ndog1 = <<Dog>>(\"Bruce\", \"Scottish Terrier\"\
+    )\ndog2 = <<Dog>>(\"Freya\", \"Greyhound\")\n\ndog1.<<bark>>()\nprint(dog1.<<name>>)\n\
+    print(dog1.<<breed>>)\n\ndog2.<<bark>>()\nprint(dog2.<<name>>)\nprint(dog2.<<breed>>)\n"
+  case_sensitive: true
+- question_id: 8
+  question_type: qna
+  question_text: What is a class in Python?
+  answer: A class is a blueprint for creating objects.
+  case_sensitive: false
+- question_id: 9
+  question_type: qna
+  question_text: What is an object in Python?
+  answer: An object is an instance of a class.
+  case_sensitive: false
+- question_id: 10
+  question_type: qna
+  question_text: What is the purpose of the `__init__()` method?
+  answer: It is a constructor method used to initialize object data.
+  case_sensitive: false
+- question_id: 11
+  question_type: qna
+  question_text: What does `self` refer to inside a class method?
+  answer: It refers to the current object instance.
+  case_sensitive: false
+- question_id: 12
+  question_type: qna
+  question_text: What is an attribute in Python classes?
+  answer: An attribute is data stored in an object, like `self.name`.
+  case_sensitive: false
+- question_id: 13
+  question_type: qna
+  question_text: What is a method in Python classes?
+  answer: A method is a function defined inside a class.
+  case_sensitive: false
+- question_id: 14
+  question_type: qna
+  question_text: What is dot notation used for in Python?
+  answer: Dot notation is used to access methods and attributes of objects.
+  case_sensitive: false
+- question_id: 15
+  question_type: write_code
+  language: python
+  question_text: "Create two classes:\n\n1. `Owner` with attributes: `name`, `address`,\
+    \ and `phone_number`.  \n   - The `__init__` method should accept `name`, `address`,\
+    \ and a parameter named `contact_number` which should be assigned to the attribute\
+    \ `phone_number`.\n\n2. `Dog` with attributes: `name`, `breed`, and `owner`. \
+    \ \n   - The `owner` should be an instance of the `Owner` class.\n   - Include\
+    \ a method `bark()` that prints `\"Woof woof\"`.\n\nThen:\n- Create two `Owner`\
+    \ objects and two `Dog` objects, each assigned one of the owners.\n- Print each\
+    \ dog's owner's name using dot notation (e.g., `dog1.owner.name`).\nUse the following\
+    \ data:\n- Owner 1: Name: Danny, Address: 122 Springfield Drive, Contact Number:\
+    \ 8888999\n- Owner 2: Name: Sally, Address: 122 Springfield Drive, Contact Number:\
+    \ 8888999\n- Dog 1: Name: Bruce, Breed: Scottish Terrier, Owner: Owner 1\n- Dog\
+    \ 2: Name: Freya, Breed: Greyhound, Owner: Owner 2\nEnsure the output shows the\
+    \ owner's name for each dog.\n"
+  question_code: "class Owner:\n    def __init__(self, name, address, contact_number):\n\
+    \        self.name = name\n        self.address = address\n        self.phone_number\
+    \ = contact_number\n\nclass Dog:\n    def __init__(self, name, breed, owner):\n\
+    \        self.name = name\n        self.breed = breed\n        self.owner = owner\n\
+    \n    def bark(self):\n        print(\"Woof woof\")\n\nowner1 = Owner(\"Danny\"\
+    , \"122 Springfield Drive\", \"8888999\")\nowner2 = Owner(\"Sally\", \"122 Springfield\
+    \ Drive\", \"8888999\")\n\ndog1 = Dog(\"Bruce\", \"Scottish Terrier\", owner1)\n\
+    dog2 = Dog(\"Freya\", \"Greyhound\", owner2)\n\nprint(dog1.owner.name)\nprint(dog2.owner.name)\n"
+  case_sensitive: true
+  guided: true
+- question_id: 16
+  question_type: write_code
+  language: python
+  question_text: 'Create a `Person` class in Python with the following:
+
+    - An `__init__` method that accepts `name` and `age` and stores them as instance
+    attributes.
+
+    - A `greet()` method that prints: `"Hello, my name is <name> and I am <age> years
+    old."`
+
+
+    Then:
+
+    - Create **two different Person objects** with different names and ages.
+
+    - Call the `greet()` method on each object to demonstrate how the **same function**
+    can behave differently for different objects of the same class.
+
+    '
+  question_code: "class Person:\n    def __init__(self, name, age):\n        self.name\
+    \ = name\n        self.age = age\n\n    def greet(self):\n        print(f\"Hello,\
+    \ my name is {self.name} and I am {self.age} years old.\")\n\nperson1 = Person(\"\
+    Alice\", 30)\nperson1.greet()\n\nperson2 = Person(\"Bob\", 42)\nperson2.greet()\n"
+  case_sensitive: true
+  guided: true
+- question_id: 17
+  question_type: mcq
+  question_text: 'True or False: Accessing a protected attribute in Python (e.g.,
+    `_email`) will cause an error.'
+  options:
+  - 'True'
+  - 'False'
+  correct_answer: 'False'
+- question_id: 18
+  question_type: fib
+  question_text: A protected attribute in Python is one whose name starts with a <<single
+    underscore>>, meant for <<internal use>> only, and is a <<convention>> rather
+    than an <<enforcement>>.
+  case_sensitive: false
+- question_id: 19
+  question_type: code_fib
+  language: python
+  question_text: Fill in the missing parts to make the `email` attribute protected
+    in the `User` class.
+  question_code: "class User:\n    def __init__(self, username, <<_email>>, password):\n\
+    \        self.username = username\n        self.<<_email>> = email\n        self.password\
+    \ = password\n\n    def get_email(self):\n        return self.<<_email>>\n"
+  case_sensitive: true
+- question_id: 20
+  question_type: write_code
+  language: python
+  question_text: 'Create a `User` class in Python with:
+
+    - A **protected attribute** `_email` (use a single underscore before `email` in
+    its name)
+
+    - Public attributes: `username` and `password`
+
+    - A method `get_email()` that returns the value of `_email`
+
+
+    Then:
+
+    - Create an instance of `User` with sample values
+
+    - Print the value of `_email` directly (to show it works but is not recommended)
+
+    - Print the value of `_email` using `get_email()` (preferred way)
+
+    '
+  question_code: "class User:\n    def __init__(self, username, email, password):\n\
+    \        self.username = username\n        self._email = email\n        self.password\
+    \ = password\n\n    def get_email(self):\n        return self._email\n\nuser1\
+    \ = User(\"dantheman\", \"dan@gmail.com\", \"123\")\n\nprint(user1._email)   \
+    \    # Not recommended\nprint(user1.get_email())  # Preferred\n"
+  case_sensitive: true
+  guided: true
+- question_id: 21
+  question_type: write_code
+  language: python
+  question_text: "Write a Python program that demonstrates how accessing a **protected\
+    \ attribute** through a method can be helpful.\n\nRequirements:\n1. Create a `User`\
+    \ class with:\n  - Public attributes: `username` and `password`\n  - A **protected**\
+    \ attribute `_email`\n  - A method `clean_email()` that:\n    - Returns the `_email`\
+    \ converted to lowercase\n    - Removes any leading or trailing spaces\n\n2. In\
+    \ your main code:\n  - Create a `User` object with extra spaces and uppercase\
+    \ letters in the email\n  - Print the raw `_email` directly (to show it can still\
+    \ be accessed, but is not recommended)\n  - Print the cleaned email using the\
+    \ `clean_email()` method (preferred approach)\n\nThis will demonstrate the benefit\
+    \ of **controlled attribute access** for data cleaning.\n"
+  question_code: "class User:\n    def __init__(self, username, email, password):\n\
+    \        self.username = username\n        self._email = email\n        self.password\
+    \ = password\n\n    def clean_email(self):\n        return self._email.lower().strip()\n\
+    \nuser1 = User(\"dantheman\", \"  Dan@GMAIL.com  \", \"123\")\n\nprint(\"Original\
+    \ email:\", user1._email)        # Not recommended\nprint(\"Cleaned email:\",\
+    \ user1.clean_email())  # Preferred\n"
+  case_sensitive: true
+  guided: true
+- question_id: 22
+  question_type: code_fib
+  language: python
+  question_text: Fill in the missing parts to complete the program that uses a method
+    to safely access and clean a protected attribute.
+  question_code: "class User:\n    def __init__(self, username, email, password):\n\
+    \        self.username = username\n        self.<<_email>> = email\n        self.password\
+    \ = password\n\n    def <<clean_email>>(self):\n        return self.<<_email>>.<<lower>>().<<strip>>()\n\
+    \nuser1 = User(\"dantheman\", \"  Dan@GMAIL.com  \", \"123\")\n\nprint(\"Original\
+    \ email:\", user1.<<_email>>)        # Not recommended\nprint(\"Cleaned email:\"\
+    , user1.<<clean_email>>())  # Preferred\n"
+  case_sensitive: true
+- question_id: 23
+  question_type: fib
+  question_text: "Python\u2019s 'Consenting Adults' philosophy means that developers\
+    \ are trusted to use attributes responsibly. Attributes with a <<single underscore>>\
+    \ are protected by <<convention>>, not <<enforcement>>, and while they can be\
+    \ <<accessed>> from outside the class, doing so is <<discouraged>>."
+  case_sensitive: false
+- question_id: 24
+  question_type: fib
+  question_text: In Python, name mangling occurs when an attribute starts with <<double
+    underscores>>. For example, `self.__email` inside a `User` class becomes <<_User__email>>
+    internally, preventing <<accidental access>> from outside and raising an <<AttributeError>>
+    if accessed directly.
+  case_sensitive: false
+- question_id: 25
+  question_type: write_code
+  language: python
+  question_text: "Write a Python program to demonstrate the use of **private variables**\
+    \ with name mangling.\n\nRequirements:\n1. Create a `User` class with:\n  - Public\
+    \ attribute: `username`\n  - Private attribute: `__email`\n  - Public attribute:\
+    \ `password`\n2. In your code:\n  - Create an instance of `User`\n  - Attempt\
+    \ to print `__email` directly (should raise `AttributeError`)\n  - Access the\
+    \ same variable using its **name-mangled form** (not recommended, but possible)\n"
+  question_code: "class User:\n    def __init__(self, username, email, password):\n\
+    \        self.username = username\n        self.__email = email\n        self.password\
+    \ = password\n\nuser = User(\"alice\", \"alice@example.com\", \"pass123\")\n\n\
+    try:\n    print(user.__email)  # Should raise AttributeError\nexcept AttributeError:\n\
+    \    print(\"Cannot access __email directly\")\n\nprint(user._User__email)  #\
+    \ Not recommended\n"
+  case_sensitive: true
+  guided: true
+- question_id: 26
+  question_type: code_fib
+  language: python
+  question_text: Fill in the missing parts to access the name-mangled version of a
+    private variable.
+  question_code: "class User:\n    def __init__(self, username, email, password):\n\
+    \        self.username = username\n        self.__email = email\n        self.password\
+    \ = password\n\nuser = User(\"alice\", \"alice@example.com\", \"pass123\")\n\n\
+    print(user.<<_User__email>>)  # Not recommended\n"
+  case_sensitive: true
+- question_id: 27
+  question_type: fib
+  question_text: The public version of email is <<email>>, the protected version is
+    <<_email>>, and the private version is <<__email>>.
+  case_sensitive: true
+- question_id: 28
+  question_type: fib
+  question_text: The use of protected variables is <<discouraged>>.
+  case_sensitive: false
+- question_id: 29
+  question_type: fib
+  question_text: The use of the name-mangled version of private variables is <<discouraged>>.
+  case_sensitive: false
+- question_id: 30
+  question_type: code_fib
+  language: python
+  question_text: Fill in the missing keywords from the guidance on when to use protected
+    vs private attributes in Python.
+  question_code: "# Use <<protected>> by default to signal <<internal use>>.\n# Use\
+    \ <<private>> only if:\n# - You really need to <<hide>> the variable\n# - Or you\u2019\
+    re building something <<complex>> (e.g. large libraries or frameworks)\n#   and\
+    \ want to prevent <<accidental access>>.\n"
+  case_sensitive: falsea
+- question_id: 31
+  question_type: write_code
+  language: python
+  question_text: "**Task:**  \nCreate a Python class that demonstrates the use of\
+    \ **getter** and **setter** methods for a *protected* attribute.\n\n**Instructions:**\n\
+    1. Create a class named `User`.\n2. The class should have three attributes: `username`,\
+    \ `_email` (protected), and `password`.\n3. Write a `get_email()` method to **return**\
+    \ the `_email`.\n4. Write a `set_email(new_email)` method to **update** the `_email`.\n\
+    5. Create an object of the `User` class.\n6. Use the getter method to **print\
+    \ the email**.\n7. Use the setter method to **update the email**.\n8. Use the\
+    \ getter again to **print the updated email**.\n"
+  question_code: "class User:\n    def __init__(self, username, email, password):\n\
+    \        self.username = username\n        self._email = email\n        self.password\
+    \ = password\n\n    def get_email(self):\n        return self._email\n\n    def\
+    \ set_email(self, new_email):\n        self._email = new_email\n\n\nuser1 = User(\"\
+    dantheman\", \"dan@gmail.com\", \"123\")\n\nprint(user1.get_email())  # Output:\
+    \ dan@gmail.com\n\nuser1.set_email(\"danny@outlook.com\")\n\nprint(user1.get_email())\
+    \  # Output: danny@outlook.com\n"
+- question_id: 32
+  question_type: fill_in_the_blank
+  language: python
+  question_text: 'Complete the code to create a Python class with a protected `_email`
+    attribute and getter/setter methods.
+
+    Follow the instructions carefully:
+
+    1. Class name should be `User`.
+
+    2. Create three attributes: `username`, `_email` (protected), and `password`.
+
+    3. Create `get_email()` to return `_email`.
+
+    4. Create `set_email(new_email)` to update `_email`.
+
+    5. Instantiate the class and demonstrate reading and updating the email.
+
+    '
+  question_code: "class User:\n    def __init__(self, username, email, password):\n\
+    \        self.username = username\n        self.<<_email>> = email\n        self.password\
+    \ = password\n\n    def <<get_email>>(self):\n        return self._email\n\n \
+    \   def <<set_email>>(self, new_email):\n        self._email = new_email\n\n\n\
+    user1 = User(\"dantheman\", \"dan@gmail.com\", \"123\")\n\nprint(user1.<<get_email>>())\
+    \  # Output: dan@gmail.com\n\nuser1.<<set_email>>(\"danny@outlook.com\")\n\nprint(user1.get_email())\
+    \  # Output: danny@outlook.com\n"
+- question_id: 33
+  question_type: code_fib
+  language: python
+  question_text: '`Fill in the missing parts to complete the program with logging
+    and validation in getters/setters:`'
+  question_code: "from datetime import datetime\n\nclass User:\n    def __init__(self,\
+    \ username, email, password):\n        self.username = username\n        self.<<_email>>\
+    \ = email  # protected attribute\n        self.password = password\n\n    def\
+    \ get_email(self):\n        <<print(f\"Email accessed at {datetime.now()}\")>>\n\
+    \        <<return self._email>>\n\n    def set_email(self, new_email):\n     \
+    \   <<if \"@\" in new_email:>>\n            <<self._email = new_email>>\n    \
+    \    <<else:>>\n            <<print(\"Invalid email address. Email not updated.\"\
+    )>>\n\n# Create user\n<<user1 = User(\"dantheman\", \"  DAN@GMAIL.com \", \"123\"\
+    )>>\n\n# Try accessing email\n<<print(user1.get_email())>>  # Logs access time\
+    \ and prints email\n\n# Try setting invalid email\n<<user1.set_email(\"invalid_email\"\
+    )>>\n<<print(user1.get_email())>>  # Should still be old email\n\n# Try setting\
+    \ valid email\n<<user1.set_email(\"danny@outlook.com\")>>\n<<print(user1.get_email())>>\
+    \  # Should be updated\n"
+  case_sensitive: true
+- question_id: 34
+  question_type: fib
+  question_text: Using getter methods provides a central place to add behavior when
+    <<reading>> data, while setter methods allow <<validation>> before updating data.
+    This approach is more <<maintainable>>, <<cleaner>>, and <<scalable>>.
+  case_sensitive: false
+  guided: true
+- question_id: 35
+  question_type: code_fib
+  language: python
+  question_text: Fill in the missing parts of the Python program using @property.
+  question_code: "class User:\n    def __init__(self, username, email, password):\n\
+    \        <<self.username = username>>\n        <<self._email = email>>  # Protected\
+    \ by <<convention>>\n        <<self.password = password>>\n\n    <<@property>>\n\
+    \    def email(self):\n        <<print(\"Email accessed\")>>\n        <<return\
+    \ self._email>>\n\n\n# Creating a user\n<<user1 = User(\"dantheman\", \"dan@gmail.com\"\
+    , \"123\")>> # Used dantheman, dan@gmail.com and 123\n\n# Accessing email via\
+    \ property\n<<print(user1.email)>>\n\n# Attempting to set directly (this will\
+    \ still work because setter not defined yet)\n<<user1.email = \"this is not an\
+    \ email\">>  # <<This will raise an AttributeError>>\n"
+  case_sensitive: true
+  guided: true
+- question_id: 36
+  question_type: write_code
+  language: python
+  question_text: Write a Python program that uses @property to access an attribute.
+    Your class should have attributes for username, a protected email, and password,
+    include a property method to return the email with a print statement when accessed,
+    create a user with your own details, and print the email.
+  question_code: "class User:\n    def __init__(self, username, email, password):\n\
+    \        self.username = username\n        self._email = email\n        self.password\
+    \ = password\n\n    @property\n    def email(self):\n        print(\"Email accessed\"\
+    )\n        return self._email\n\nuser1 = User(\"dantheman\", \"dan@gmail.com\"\
+    , \"123\")\nprint(user1.email)\nuser1.email = \"this is not an email\"\n"
+  case_sensitive: true
+  guided: true
+- question_id: 37
+  question_type: fib
+  question_text: In Python, the <<@property>> decorator provides a way to access methods
+    like attributes, allowing you to add logic without changing how the attribute
+    is <<accessed>>. This improves <<maintainability>> and <<data integrity>>.
+  case_sensitive: false
+  guided: true
+- question_id: 38
+  question_type: fib
+  question_text: With <<@property>>, you can add logic under the hood while keeping
+    the same attribute access syntax. This avoids having to replace every call to
+    traditional getter and setter methods like <<get_attribute>> and <<set_attribute>>.
+    It keeps your code <<cleaner>> and <<maintainable>>.
+  case_sensitive: false
+  guided: true
+- question_id: 39
+  question_type: code_fib
+  language: python
+  question_text: Fill in the missing parts of the Python program using @property and
+    @<property>.setter for controlled attribute access.
+  question_code: "from <<datetime>> import datetime\n\nclass User:\n    def __init__(self,\
+    \ username, email, password):\n        <<self.username = username>>\n        <<self._email\
+    \ = email>>  # Protected by convention\n        <<self.password = password>>\n\
+    \n    <<@property>>\n    def email(self):\n        <<print(f\"Email accessed at\
+    \ {datetime.now()}\")>>\n        <<return self._email>>\n\n    <<@email.setter>>\n\
+    \    def email(self, new_email):\n        <<if \"@\" in new_email:>>\n       \
+    \     <<self._email = new_email>>\n        <<else:>>\n            <<print(\"Invalid\
+    \ email address: must contain '@'\")>>\n\n# Creating a user\n<<user1 = User(\"\
+    dantheman\", \"dan@gmail.com\", \"123\")>>\n\n# Try setting an invalid email\n\
+    <<user1.email = \"this is not an email\">>\n<<print(user1.email)>>\n\n# Try setting\
+    \ a valid email\n<<user1.email = \"danny@outlook.com\">>\n<<print(user1.email)>>\n"
+  case_sensitive: true
+  guided: true
+- question_id: 40
+  question_type: write_code
+  language: python
+  question_text: 'Write a Python class called User with three attributes: username,
+    a protected email, and password. Add a property method `email` that prints the
+    access time and returns the email. Add a setter method for `email` that checks
+    if the value contains ''@'', updating the email if valid, or printing an error
+    if invalid. Create a user with sample details, attempt to set an invalid email
+    and print the email, then set a valid email and print it again.'
+  question_code: "from datetime import datetime\n\nclass User:\n    def __init__(self,\
+    \ username, email, password):\n        self.username = username\n        self._email\
+    \ = email\n        self.password = password\n\n    @property\n    def email(self):\n\
+    \        print(f\"Email accessed at {datetime.now()}\")\n        return self._email\n\
+    \n    @email.setter\n    def email(self, new_email):\n        if \"@\" in new_email:\n\
+    \            self._email = new_email\n        else:\n            print(\"Invalid\
+    \ email address: must contain '@'\")\n\nuser1 = User(\"dantheman\", \"dan@gmail.com\"\
+    , \"123\")\nuser1.email = \"this is not an email\"\nprint(user1.email)\nuser1.email\
+    \ = \"danny@outlook.com\"\nprint(user1.email)\n"
+  case_sensitive: true
+  guided: true
+- question_id: 41
+  question_type: fib
+  question_text: In Python, the <<@property>> decorator allows you to access a method
+    like an <<attribute>>, making it possible to add logic such as <<validation>>
+    or <<logging>> without changing external code. A setter method defined with <<@property_name.setter>>
+    centralizes update rules, improving <<maintainability>> and <<data integrity>>.
+  case_sensitive: false
+  guided: true
+- question_id: 42
+  question_type: code_fib
+  language: python
+  question_text: Fill in the missing parts of the Python program that uses a static
+    (class) attribute to track the number of User instances created.
+  question_code: "class User:\n    <<user_count = 0>>  # Static / Class attribute\n\
+    \n    def __init__(self, username, email):\n        <<self.username = username>>\
+    \      # Instance attribute\n        <<self.email = email>>            # Instance\
+    \ attribute\n        <<User.user_count += 1>>          # Increment the static\
+    \ attribute\n\n    def display_user(self):\n        <<print(f\"Username: {self.username},\
+    \ Email: {self.email}\")>>  #Format : Username: username, Email: email\n\n# Creating\
+    \ two user instances\n<<user1 = User(\"dantheman\", \"dan@gmail.com\")>>\n<<user2\
+    \ = User(\"sally123\", \"sally@gmail.com\")>>\n\n# Accessing static attribute\
+    \ directly from class\n<<print(User.user_count)>>  # Output: 2\n\n# Accessing\
+    \ static attribute from instances (still refers to class attribute)\n<<print(user1.user_count)>>\
+    \  # Output: 2\n<<print(user2.user_count)>>  # Output: 2\n"
+  case_sensitive: true
+  guided: true
+- question_id: 43
+  question_type: write_code
+  language: python
+  question_text: 'Write a Python class called `User` with a static attribute `user_count`
+    initialized to 0, and instance attributes `username` and `email`. In the constructor,
+    set the instance attributes and increment `user_count` by 1 each time a new object
+    is created. Add a method `display_user()` that prints the username and email in
+    the format: `Username: <username>, Email: <email>`. Create two users: one with
+    `username=''dantheman'', email=''dan@gmail.com''` and another with `username=''sally123'',
+    email=''sally@gmail.com''`. Finally, print the static attribute `user_count` from
+    the class and from each instance.'
+  question_code: "class User:\n    user_count = 0\n\n    def __init__(self, username,\
+    \ email):\n        self.username = username\n        self.email = email\n    \
+    \    User.user_count += 1\n\n    def display_user(self):\n        print(f\"Username:\
+    \ {self.username}, Email: {self.email}\")\n\nuser1 = User(\"dantheman\", \"dan@gmail.com\"\
+    )\nuser2 = User(\"sally123\", \"sally@gmail.com\")\n\nprint(User.user_count)\n\
+    print(user1.user_count)\nprint(user2.user_count)\n"
+  case_sensitive: true
+  guided: true
+- question_id: 44
+  question_type: fib
+  question_text: A <<static>> attribute (also called a <<class>> attribute) belongs
+    to the class itself rather than any individual object. It is shared by <<all>>
+    instances of the class. Static attributes are often used for storing values that
+    should be <<consistent>> across all objects, such as a count of created instances.
+  case_sensitive: false
+  guided: true
+- question_id: 45
+  question_type: qna
+  question_text: What is a class attribute?
+  answer: An attribute shared by all instances of a class.
+  case_sensitive: false
+- question_id: 46
+  question_type: list_completion
+  question_text: List the situations when you should use static (class) attributes
+    in Python.
+  answer:
+  - When you need a counter or tracker
+  - When you have shared constants or defaults
+  - For class-level configuration
+  case_sensitive: false
+  order_sensitive: false
+- question_id: 47
+  question_type: list_completion
+  question_text: List the situations when you should use instance attributes in Python.
+  answer:
+  - When data is unique per object
+  - When objects have their own identity or state
+  case_sensitive: false
+  order_sensitive: false
+- question_id: 48
+  question_type: mcq
+  question_text: Which is the preferred method to access a static (class) attribute
+    in Python?
+  options:
+  - ClassName.attribute
+  - instance.attribute
+  - self.attribute
+  - object.attribute
+  correct_answer: ClassName.attribute
+- question_id: 49
+  question_type: code_fib
+  question_text: Fill in the missing code parts for the BankAccount class.
+  question_code: "class BankAccount:\n    <<MIN_BALANCE = 100>>  # Static (class-level)\
+    \ attribute \n\n    def __init__(self, owner, balance=0):\n        <<self.owner\
+    \ = owner>>\n        <<self._balance = balance>>\n\n    def deposit(self, amount):\
+    \  # Instance method\n        if amount > 0:\n            self._balance += amount\n\
+    \            print(f\"{self.owner}'s new balance: ${self._balance}\")\n      \
+    \  else:\n            print(\"Deposit amount must be positive.\")\n\n    <<@staticmethod>>\n\
+    \    <<def is_valid_interest_rate(rate):>>  # Static method\n        <<return\
+    \ 0 <= rate <= 5>>\n\n<<account = BankAccount(\"Alice\", 500)>>\n<<account.deposit(200)>>\
+    \  # Instance method\n\n<<print(BankAccount.is_valid_interest_rate(3))>>   # \u2705\
+    \ True\n<<print(BankAccount.is_valid_interest_rate(10))>>  # \u274C False\n"
+- question_id: 50
+  question_type: write_code
+  question_text: "Write a Python class `BankAccount` with:\n- A static (class-level)\
+    \ attribute `MIN_BALANCE` set to `100`\n- An `__init__` method with attributes:\n\
+    \  - `owner` (string)\n  - `_balance` (integer, default is 0)\n- An `deposit(amount)`\
+    \ instance method that:\n  - Adds `amount` to `_balance` if positive and prints:\
+    \ \"`<owner>`'s new balance: $<balance>\"\n  - Prints `\"Deposit amount must be\
+    \ positive.\"` if amount is not positive\n- A static method `is_valid_interest_rate(rate)`\
+    \ that:\n  - Returns `True` if `rate` is between `0` and `5` inclusive, otherwise\
+    \ `False`\nAfter defining the class:\n- Create an account for `\"Alice\"` with\
+    \ starting balance `500`\n- Call `deposit(200)` on the account\n- Print the result\
+    \ of `BankAccount.is_valid_interest_rate(3)`\n- Print the result of `BankAccount.is_valid_interest_rate(10)`\n"
+  question_code: "class BankAccount:\n  MIN_BALANCE = 100\n\n  def __init__(self,\
+    \ owner, balance=0):\n      self.owner = owner\n      self._balance = balance\n\
+    \n  def deposit(self, amount):\n      if amount > 0:\n          self._balance\
+    \ += amount\n          print(f\"{self.owner}'s new balance: ${self._balance}\"\
+    )\n      else:\n          print(\"Deposit amount must be positive.\")\n\n  @staticmethod\n\
+    \  def is_valid_interest_rate(rate):  # Static method\n  return 0 <= rate <= 5\n\
+    \naccount = BankAccount(\"Alice\", 500)\naccount.deposit(200)\n\nprint(BankAccount.is_valid_interest_rate(3))\n\
+    print(BankAccount.is_valid_interest_rate(10))\n"
+  case_sensitive: true
+  guided: true
+- question_id: 51
+  question_type: fib
+  question_text: The decorator used to define a static method in Python is <<@staticmethod>>.
+  case_sensitive: false
+  guided: true
+- question_id: 52
+  question_type: list_completion
+  question_text: List the differences between an instance method and a static method
+    in Python.
+  answer:
+  - Instance method takes self; static method does not
+  - Instance method tied to object; static method tied to class
+  - Instance method can access instance data; static method cannot
+  - Instance method can access class data; static method cannot directly
+  - Static method declared with @staticmethod; instance method has no decorator
+  case_sensitive: false
+  order_sensitive: false
+- question_id: 53
+  question_type: fib
+  question_text: In Python, a method that does not depend on instance or class data
+    is called a <<static>> method.
+  answer: static
+  case_sensitive: true
+  guided: true
+- question_id: 54
+  question_type: fib
+  question_text: To define a static method in Python, you use the <<@staticmethod>>
+    decorator.
+  answer: '@staticmethod'
+  case_sensitive: true
+  guided: true
+- question_id: 55
+  question_type: fib
+  question_text: Static methods are ideal for <<utility>> functions that perform logic
+    or validation without needing object state.
+  answer: utility
+  case_sensitive: false
+  guided: true
+- question_id: 56
+  question_type: fib
+  question_text: A static method cannot access <<self>> or <<cls>> because it does
+    not rely on instance or class state.
+  answer: self, cls
+  case_sensitive: true
+  guided: true
+- question_id: 57
+  question_type: fib
+  question_text: One benefit of static methods is <<encapsulation>>, which keeps related
+    logic within the class.
+  answer: encapsulation
+  case_sensitive: false
+  guided: true
+- question_id: 58
+  question_type: fib
+  question_text: Static methods can be called via the <<class>> without creating an
+    instance.
+  case_sensitive: false
+  guided: true
+- question_id: 59
+  question_type: fib
+  question_text: In Python, a public method is defined with <<no underscore>>, a protected
+    method with <<single underscore>>, and a private method with <<double underscore>>.
+  case_sensitive: false
+  guided: true
+- question_id: 60
+  question_type: code_fib
+  language: python
+  question_text: 'Fill in the missing parts of the Python BankAccount class to define
+    methods with appropriate access levels:'
+  question_code: "class BankAccount:\n    MIN_BALANCE = 100\n\n    def __init__(self,\
+    \ owner, balance=0):\n        self.owner = owner\n        self._balance = balance\n\
+    \n    def deposit(self, amount):\n        <<if self._is_valid_amount(amount):>>\n\
+    \            self._balance += amount\n            <<self.__log_transaction(\"\
+    deposit\", amount)>>\n        else:\n            print(\"Deposit amount must be\
+    \ positive.\")\n\n    <<def _is_valid_amount(self, amount):>>\n        return\
+    \ amount > 0\n\n    <<def __log_transaction(self, transaction_type, amount):>>\n\
+    \        print(f\"Logging {transaction_type} of ${amount}. New balance: ${self._balance}\"\
+    )\n"
+  case_sensitive: true
+  guided: true
+- question_id: 61
+  question_type: write_code
+  language: python
+  question_text: "Write a Python class `BankAccount` with:\n- Class attribute: `MIN_BALANCE\
+    \ = 100`\n- Instance attributes: `owner` (string, e.g., \"Alice\"), `_balance`\
+    \ (float, e.g., 500)\n- Methods:\n  - `deposit(self, amount)`: Public, adds amount\
+    \ to `_balance` if valid (uses `_is_valid_amount`), else prints \"Deposit amount\
+    \ must be positive.\"\n  - `_is_valid_amount(self, amount)`: Protected, returns\
+    \ True if amount > 0\n  - `__log_transaction(self, transaction_type, amount)`:\
+    \ Private, prints transaction log\nAfter defining the class, create an instance\
+    \ with owner=\"Alice\", balance=500, call `deposit(100)`, and print the new `_balance`.\n"
+  question_code: "class BankAccount:\n    MIN_BALANCE = 100\n\n    def __init__(self,\
+    \ owner, balance=0):\n        self.owner = owner\n        self._balance = balance\n\
+    \n    def deposit(self, amount):\n        if self._is_valid_amount(amount):\n\
+    \            self._balance += amount\n            self.__log_transaction(\"deposit\"\
+    , amount)\n        else:\n            print(\"Deposit amount must be positive.\"\
+    )\n\n    def _is_valid_amount(self, amount):\n        return amount > 0\n\n  \
+    \  def __log_transaction(self, transaction_type, amount):\n        print(f\"Logging\
+    \ {transaction_type} of ${amount}. New balance: ${self._balance}\")\n\naccount\
+    \ = BankAccount(\"Alice\", 500)\naccount.deposit(100)\nprint(account._balance)\n"
+  case_sensitive: true
+  guided: false
+- question_id: 62
+  question_type: qna
+  question_text: How would you access the name-mangled version of a private method
+    like __log_transaction?
+  answer: _BankAccount__log_transaction
+  case_sensitive: true
+- question_id: 63
+  question_type: fib
+  question_text: A private method's name is mangled to <<_ClassName__method>> to restrict
+    external access.
+  case_sensitive: true
+  guided: true
