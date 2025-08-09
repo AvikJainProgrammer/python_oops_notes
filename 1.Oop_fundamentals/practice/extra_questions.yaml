@@ -1,0 +1,46 @@
+ questions:
+  - question_id: 16
+    question_type: fib
+    question_text: "In Python, a method that uses <<cls>> refers to the class itself."
+    answer: "cls"
+    case_sensitive: true
+    guided: true
+
+  - question_id: 17
+    question_type: fib
+    question_text: "To define a method that accesses class-level data, use the <<@classmethod>> decorator."
+    answer: "@classmethod"
+    case_sensitive: true
+    guided: true
+
+  - question_id: 18
+    question_type: fib
+    question_text: "A <<classmethod>> uses cls to modify or access class state."
+    answer: "classmethod"
+    case_sensitive: true
+    guided: true
+
+  - question_id: 19
+    question_type: qna
+    question_text: "What does cls represent in a Python class method?"
+    answer: "The class itself"
+    case_sensitive: false
+
+  - question_id: 20
+    question_type: qna
+    question_text: "What is cls used for in Python?"
+    answer: "Access class state"
+    case_sensitive: false
+
+  - question_id: 21
+    question_type: fib
+    question_text: "The <<cls>> parameter is used to create factory methods in Python."
+    answer: "cls"
+    case_sensitive: true
+    guided: true
+
+  - question_id: 22
+    question_type: qna
+    question_text: "Why use cls instead of self in Python?"
+    answer: "For class-level operations"
+    case_sensitive: false

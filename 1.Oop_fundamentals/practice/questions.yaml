@@ -14,7 +14,7 @@ questions:
 
       print(type(name))  # should output <class 'str'>
       print(type(age))   # should output <class 'int'>
-    case_sensitive: false
+    case_sensitive: true
     guided: true
 
   - question_id: 12
@@ -263,4 +263,604 @@ questions:
       print(user1._email)       # Not recommended
       print(user1.get_email())  # Preferred
     case_sensitive: true
+    guided: true
+  - question_id: 15
+    question_type: write_code
+    language: python
+    question_text: |
+      Write a Python program that demonstrates how accessing a **protected attribute** through a method can be helpful.
+
+      Requirements:
+      1. Create a `User` class with:
+        - Public attributes: `username` and `password`
+        - A **protected** attribute `_email`
+        - A method `clean_email()` that:
+          - Returns the `_email` converted to lowercase
+          - Removes any leading or trailing spaces
+
+      2. In your main code:
+        - Create a `User` object with extra spaces and uppercase letters in the email
+        - Print the raw `_email` directly (to show it can still be accessed, but is not recommended)
+        - Print the cleaned email using the `clean_email()` method (preferred approach)
+
+      This will demonstrate the benefit of **controlled attribute access** for data cleaning.
+    question_code: |
+      class User:
+          def __init__(self, username, email, password):
+              self.username = username
+              self._email = email
+              self.password = password
+
+          def clean_email(self):
+              return self._email.lower().strip()
+
+      user1 = User("dantheman", "  Dan@GMAIL.com  ", "123")
+
+      print("Original email:", user1._email)        # Not recommended
+      print("Cleaned email:", user1.clean_email())  # Preferred
+    case_sensitive: true
+    guided: true
+  - question_id: 16
+    question_type: code_fib
+    language: python
+    question_text: "Fill in the missing parts to complete the program that uses a method to safely access and clean a protected attribute."
+    question_code: |
+      class User:
+          def __init__(self, username, email, password):
+              self.username = username
+              self.<<_email>> = email
+              self.password = password
+
+          def <<clean_email>>(self):
+              return self.<<_email>>.<<lower>>().<<strip>>()
+
+      user1 = User("dantheman", "  Dan@GMAIL.com  ", "123")
+
+      print("Original email:", user1.<<_email>>)        # Not recommended
+      print("Cleaned email:", user1.<<clean_email>>())  # Preferred
+    case_sensitive: true
+  - question_id: 17
+    question_type: fib
+    question_text: "Python’s 'Consenting Adults' philosophy means that developers are trusted to use attributes responsibly. Attributes with a <<single underscore>> are protected by <<convention>>, not <<enforcement>>, and while they can be <<accessed>> from outside the class, doing so is <<discouraged>>."
+    case_sensitive: false
+
+  - question_id: 18
+    question_type: fib
+    question_text: "In Python, name mangling occurs when an attribute starts with <<double underscores>>. For example, `self.__email` inside a `User` class becomes <<_User__email>> internally, preventing <<accidental access>> from outside and raising an <<AttributeError>> if accessed directly."
+    case_sensitive: false
+
+  - question_id: 19
+    question_type: write_code
+    language: python
+    question_text: |
+      Write a Python program to demonstrate the use of **private variables** with name mangling.
+
+      Requirements:
+      1. Create a `User` class with:
+        - Public attribute: `username`
+        - Private attribute: `__email`
+        - Public attribute: `password`
+      2. In your code:
+        - Create an instance of `User`
+        - Attempt to print `__email` directly (should raise `AttributeError`)
+        - Access the same variable using its **name-mangled form** (not recommended, but possible)
+    question_code: |
+      class User:
+          def __init__(self, username, email, password):
+              self.username = username
+              self.__email = email
+              self.password = password
+
+      user = User("alice", "alice@example.com", "pass123")
+
+      try:
+          print(user.__email)  # Should raise AttributeError
+      except AttributeError:
+          print("Cannot access __email directly")
+
+      print(user._User__email)  # Not recommended
+    case_sensitive: true
+    guided: true
+
+  - question_id: 20
+    question_type: code_fib
+    language: python
+    question_text: "Fill in the missing parts to access the name-mangled version of a private variable."
+    question_code: |
+      class User:
+          def __init__(self, username, email, password):
+              self.username = username
+              self.__email = email
+              self.password = password
+
+      user = User("alice", "alice@example.com", "pass123")
+
+      print(user.<<_User__email>>)  # Not recommended
+    case_sensitive: true
+
+  - question_id: 21
+    question_type: fib
+    question_text: "The public version of email is <<email>>, the protected version is <<_email>>, and the private version is <<__email>>."
+    case_sensitive: true
+
+  - question_id: 22
+    question_type: fib
+    question_text: "The use of protected variables is <<discouraged>>."
+    case_sensitive: false
+
+  - question_id: 23
+    question_type: fib
+    question_text: "The use of the name-mangled version of private variables is <<discouraged>>."
+    case_sensitive: false
+  - question_id: 24
+    question_type: code_fib
+    language: python
+    question_text: "Fill in the missing keywords from the guidance on when to use protected vs private attributes in Python."
+    question_code: |
+      # Use <<protected>> by default to signal <<internal use>>.
+      # Use <<private>> only if:
+      # - You really need to <<hide>> the variable
+      # - Or you’re building something <<complex>> (e.g. large libraries or frameworks)
+      #   and want to prevent <<accidental access>>.
+    case_sensitive: falsea
+  - question_id: 25
+    question_type: write_code
+    language: python
+    question_text: |
+      **Task:**  
+      Create a Python class that demonstrates the use of **getter** and **setter** methods for a *protected* attribute.
+
+      **Instructions:**
+      1. Create a class named `User`.
+      2. The class should have three attributes: `username`, `_email` (protected), and `password`.
+      3. Write a `get_email()` method to **return** the `_email`.
+      4. Write a `set_email(new_email)` method to **update** the `_email`.
+      5. Create an object of the `User` class.
+      6. Use the getter method to **print the email**.
+      7. Use the setter method to **update the email**.
+      8. Use the getter again to **print the updated email**.
+    question_code: |
+      class User:
+          def __init__(self, username, email, password):
+              self.username = username
+              self._email = email
+              self.password = password
+
+          def get_email(self):
+              return self._email
+
+          def set_email(self, new_email):
+              self._email = new_email
+
+
+      user1 = User("dantheman", "dan@gmail.com", "123")
+
+      print(user1.get_email())  # Output: dan@gmail.com
+
+      user1.set_email("danny@outlook.com")
+
+      print(user1.get_email())  # Output: danny@outlook.com
+  - question_id: 26
+    question_type: fill_in_the_blank
+    language: python
+    question_text: |
+      Complete the code to create a Python class with a protected `_email` attribute and getter/setter methods.
+      Follow the instructions carefully:
+      1. Class name should be `User`.
+      2. Create three attributes: `username`, `_email` (protected), and `password`.
+      3. Create `get_email()` to return `_email`.
+      4. Create `set_email(new_email)` to update `_email`.
+      5. Instantiate the class and demonstrate reading and updating the email.
+    question_code: |
+      class User:
+          def __init__(self, username, email, password):
+              self.username = username
+              self.<<_email>> = email
+              self.password = password
+
+          def <<get_email>>(self):
+              return self._email
+
+          def <<set_email>>(self, new_email):
+              self._email = new_email
+
+
+      user1 = User("dantheman", "dan@gmail.com", "123")
+
+      print(user1.<<get_email>>())  # Output: dan@gmail.com
+
+      user1.<<set_email>>("danny@outlook.com")
+
+      print(user1.get_email())  # Output: danny@outlook.com
+  - question_id: 27
+    question_type: code_fib
+    language: python
+    question_text: "`Fill in the missing parts to complete the program with logging and validation in getters/setters:`"
+    question_code: |
+      from datetime import datetime
+
+      class User:
+          def __init__(self, username, email, password):
+              self.username = username
+              self.<<_email>> = email  # protected attribute
+              self.password = password
+
+          def get_email(self):
+              <<print(f"Email accessed at {datetime.now()}")>>
+              <<return self._email>>
+
+          def set_email(self, new_email):
+              <<if "@" in new_email:>>
+                  <<self._email = new_email>>
+              <<else:>>
+                  <<print("Invalid email address. Email not updated.")>>
+
+      # Create user
+      <<user1 = User("dantheman", "  DAN@GMAIL.com ", "123")>>
+
+      # Try accessing email
+      <<print(user1.get_email())>>  # Logs access time and prints email
+
+      # Try setting invalid email
+      <<user1.set_email("invalid_email")>>
+      <<print(user1.get_email())>>  # Should still be old email
+
+      # Try setting valid email
+      <<user1.set_email("danny@outlook.com")>>
+      <<print(user1.get_email())>>  # Should be updated
+    case_sensitive: true
+  - question_id: 1
+    question_type: fib
+    question_text: "Using getter methods provides a central place to add behavior when <<reading>> data, while setter methods allow <<validation>> before updating data. This approach is more <<maintainable>>, <<cleaner>>, and <<scalable>>."
+    case_sensitive: false
+    guided: true
+  - question_id: 1
+    question_type: code_fib
+    language: python
+    question_text: "Fill in the missing parts of the Python program using @property."
+    question_code: |
+      class User:
+          def __init__(self, username, email, password):
+              <<self.username = username>>
+              <<self._email = email>>  # Protected by <<convention>>
+              <<self.password = password>>
+
+          <<@property>>
+          def email(self):
+              <<print("Email accessed")>>
+              <<return self._email>>
+
+
+      # Creating a user
+      <<user1 = User("dantheman", "dan@gmail.com", "123")>> # Used dantheman, dan@gmail.com and 123
+
+      # Accessing email via property
+      <<print(user1.email)>>
+
+      # Attempting to set directly (this will still work because setter not defined yet)
+      <<user1.email = "this is not an email">>  # <<This will raise an AttributeError>>
+    case_sensitive: true
+    guided: true
+
+  - question_id: 2
+    question_type: write_code
+    language: python
+    question_text: "Write a Python program that uses @property to access an attribute. Your class should have attributes for username, a protected email, and password, include a property method to return the email with a print statement when accessed, create a user with your own details, and print the email."
+    question_code: |
+      class User:
+          def __init__(self, username, email, password):
+              self.username = username
+              self._email = email
+              self.password = password
+
+          @property
+          def email(self):
+              print("Email accessed")
+              return self._email
+
+      user1 = User("dantheman", "dan@gmail.com", "123")
+      print(user1.email)
+      user1.email = "this is not an email"
+    case_sensitive: true
+    guided: true
+
+  - question_id: 3
+    question_type: fib
+    question_text: "In Python, the <<@property>> decorator provides a way to access methods like attributes, allowing you to add logic without changing how the attribute is <<accessed>>. This improves <<maintainability>> and <<data integrity>>."
+    case_sensitive: false
+    guided: true
+  - question_id: 4
+    question_type: fib
+    question_text: "With <<@property>>, you can add logic under the hood while keeping the same attribute access syntax. This avoids having to replace every call to traditional getter and setter methods like <<get_attribute>> and <<set_attribute>>. It keeps your code <<cleaner>> and <<maintainable>>."
+    case_sensitive: false
+    guided: true
+  - question_id: 5
+    question_type: code_fib
+    language: python
+    question_text: "Fill in the missing parts of the Python program using @property and @<property>.setter for controlled attribute access."
+    question_code: |
+      from <<datetime>> import datetime
+
+      class User:
+          def __init__(self, username, email, password):
+              <<self.username = username>>
+              <<self._email = email>>  # Protected by convention
+              <<self.password = password>>
+
+          <<@property>>
+          def email(self):
+              <<print(f"Email accessed at {datetime.now()}")>>
+              <<return self._email>>
+
+          <<@email.setter>>
+          def email(self, new_email):
+              <<if "@" in new_email:>>
+                  <<self._email = new_email>>
+              <<else:>>
+                  <<print("Invalid email address: must contain '@'")>>
+
+      # Creating a user
+      <<user1 = User("dantheman", "dan@gmail.com", "123")>>
+
+      # Try setting an invalid email
+      <<user1.email = "this is not an email">>
+      <<print(user1.email)>>
+
+      # Try setting a valid email
+      <<user1.email = "danny@outlook.com">>
+      <<print(user1.email)>>
+    case_sensitive: true
+    guided: true
+  - question_id: 6
+    question_type: write_code
+    language: python
+    question_text: "Write a Python class called User with three attributes: username, a protected email, and password. Add a property method `email` that prints the access time and returns the email. Add a setter method for `email` that checks if the value contains '@', updating the email if valid, or printing an error if invalid. Create a user with sample details, attempt to set an invalid email and print the email, then set a valid email and print it again."
+    question_code: |
+      from datetime import datetime
+
+      class User:
+          def __init__(self, username, email, password):
+              self.username = username
+              self._email = email
+              self.password = password
+
+          @property
+          def email(self):
+              print(f"Email accessed at {datetime.now()}")
+              return self._email
+
+          @email.setter
+          def email(self, new_email):
+              if "@" in new_email:
+                  self._email = new_email
+              else:
+                  print("Invalid email address: must contain '@'")
+
+      user1 = User("dantheman", "dan@gmail.com", "123")
+      user1.email = "this is not an email"
+      print(user1.email)
+      user1.email = "danny@outlook.com"
+      print(user1.email)
+    case_sensitive: true
+    guided: true
+  - question_id: 7
+    question_type: fib
+    question_text: "In Python, the <<@property>> decorator allows you to access a method like an <<attribute>>, making it possible to add logic such as <<validation>> or <<logging>> without changing external code. A setter method defined with <<@property_name.setter>> centralizes update rules, improving <<maintainability>> and <<data integrity>>."
+    case_sensitive: false
+    guided: true
+  - question_id: 8
+    question_type: code_fib
+    language: python
+    question_text: "Fill in the missing parts of the Python program that uses a static (class) attribute to track the number of User instances created."
+    question_code: |
+      class User:
+          <<user_count = 0>>  # Static / Class attribute
+
+          def __init__(self, username, email):
+              <<self.username = username>>      # Instance attribute
+              <<self.email = email>>            # Instance attribute
+              <<User.user_count += 1>>          # Increment the static attribute
+
+          def display_user(self):
+              <<print(f"Username: {self.username}, Email: {self.email}")>>  #Format : Username: username, Email: email
+
+      # Creating two user instances
+      <<user1 = User("dantheman", "dan@gmail.com")>>
+      <<user2 = User("sally123", "sally@gmail.com")>>
+
+      # Accessing static attribute directly from class
+      <<print(User.user_count)>>  # Output: 2
+
+      # Accessing static attribute from instances (still refers to class attribute)
+      <<print(user1.user_count)>>  # Output: 2
+      <<print(user2.user_count)>>  # Output: 2
+    case_sensitive: true
+    guided: true
+  - question_id: 9
+    question_type: write_code
+    language: python
+    question_text: "Write a Python class called `User` with a static attribute `user_count` initialized to 0, and instance attributes `username` and `email`. In the constructor, set the instance attributes and increment `user_count` by 1 each time a new object is created. Add a method `display_user()` that prints the username and email in the format: `Username: <username>, Email: <email>`. Create two users: one with `username='dantheman', email='dan@gmail.com'` and another with `username='sally123', email='sally@gmail.com'`. Finally, print the static attribute `user_count` from the class and from each instance."
+    question_code: |
+      class User:
+          user_count = 0
+
+          def __init__(self, username, email):
+              self.username = username
+              self.email = email
+              User.user_count += 1
+
+          def display_user(self):
+              print(f"Username: {self.username}, Email: {self.email}")
+
+      user1 = User("dantheman", "dan@gmail.com")
+      user2 = User("sally123", "sally@gmail.com")
+
+      print(User.user_count)
+      print(user1.user_count)
+      print(user2.user_count)
+    case_sensitive: true
+    guided: true
+  - question_id: 10
+    question_type: fib
+    question_text: "A <<static>> attribute (also called a <<class>> attribute) belongs to the class itself rather than any individual object. It is shared by <<all>> instances of the class. Static attributes are often used for storing values that should be <<consistent>> across all objects, such as a count of created instances."
+    case_sensitive: false
+    guided: true
+  - question_id: 11
+    question_type: qna
+    question_text: "What is a class attribute?"
+    answer: "An attribute shared by all instances of a class."
+    case_sensitive: false
+  - question_id: 12
+    question_type: list_completion
+    question_text: "List the situations when you should use static (class) attributes in Python."
+    answer:
+      - "When you need a counter or tracker"
+      - "When you have shared constants or defaults"
+      - "For class-level configuration"
+    case_sensitive: false
+    order_sensitive: false
+  - question_id: 13
+    question_type: list_completion
+    question_text: "List the situations when you should use instance attributes in Python."
+    answer:
+      - "When data is unique per object"
+      - "When objects have their own identity or state"
+    case_sensitive: false
+    order_sensitive: false
+  - question_id: 14
+    question_type: mcq
+    question_text: "Which is the preferred method to access a static (class) attribute in Python?"
+    options:
+      - "ClassName.attribute"
+      - "instance.attribute"
+      - "self.attribute"
+      - "object.attribute"
+    correct_answer: "ClassName.attribute"
+  - question_id: 15
+    question_type: code_fib
+    question_text: "Fill in the missing code parts for the BankAccount class."
+    question_code: |
+      class BankAccount:
+          <<MIN_BALANCE = 100>>  # Static (class-level) attribute 
+
+          def __init__(self, owner, balance=0):
+              <<self.owner = owner>>
+              <<self._balance = balance>>
+
+          def deposit(self, amount):  # Instance method
+              if amount > 0:
+                  self._balance += amount
+                  print(f"{self.owner}'s new balance: ${self._balance}")
+              else:
+                  print("Deposit amount must be positive.")
+
+          <<@staticmethod>>
+          <<def is_valid_interest_rate(rate):>>  # Static method
+              <<return 0 <= rate <= 5>>
+
+      <<account = BankAccount("Alice", 500)>>
+      <<account.deposit(200)>>  # Instance method
+
+      <<print(BankAccount.is_valid_interest_rate(3))>>   # ✅ True
+      <<print(BankAccount.is_valid_interest_rate(10))>>  # ❌ False
+  - question_id: 16
+    question_type: write_code
+    question_text: |
+      Write a Python class `BankAccount` with:
+      - A static (class-level) attribute `MIN_BALANCE` set to `100`
+      - An `__init__` method with attributes:
+        - `owner` (string)
+        - `_balance` (integer, default is 0)
+      - An `deposit(amount)` instance method that:
+        - Adds `amount` to `_balance` if positive and prints: "`<owner>`'s new balance: $<balance>"
+        - Prints `"Deposit amount must be positive."` if amount is not positive
+      - A static method `is_valid_interest_rate(rate)` that:
+        - Returns `True` if `rate` is between `0` and `5` inclusive, otherwise `False`
+      After defining the class:
+      - Create an account for `"Alice"` with starting balance `500`
+      - Call `deposit(200)` on the account
+      - Print the result of `BankAccount.is_valid_interest_rate(3)`
+      - Print the result of `BankAccount.is_valid_interest_rate(10)`
+    question_code: |
+      class BankAccount:
+        MIN_BALANCE = 100
+
+        def __init__(self, owner, balance=0):
+            self.owner = owner
+            self._balance = balance
+
+        def deposit(self, amount):
+            if amount > 0:
+                self._balance += amount
+                print(f"{self.owner}'s new balance: ${self._balance}")
+            else:
+                print("Deposit amount must be positive.")
+
+        @staticmethod
+        def is_valid_interest_rate(rate):  # Static method
+        return 0 <= rate <= 5
+      
+      account = BankAccount("Alice", 500)
+      account.deposit(200)
+
+      print(BankAccount.is_valid_interest_rate(3))
+      print(BankAccount.is_valid_interest_rate(10))
+    case_sensitive: true
+    guided: true
+  - question_id: 17
+    question_type: fib
+    question_text: "The decorator used to define a static method in Python is <<@staticmethod>>."
+    case_sensitive: false
+    guided: true
+  - question_id: 18
+    question_type: list_completion
+    question_text: "List the differences between an instance method and a static method in Python."
+    answer:
+      - "Instance method takes self; static method does not"
+      - "Instance method tied to object; static method tied to class"
+      - "Instance method can access instance data; static method cannot"
+      - "Instance method can access class data; static method cannot directly"
+      - "Static method declared with @staticmethod; instance method has no decorator"
+    case_sensitive: false
+    order_sensitive: false
+  - question_id: 10
+    question_type: fib
+    question_text: "In Python, a method that does not depend on instance or class data is called a <<static>> method."
+    answer: "static"
+    case_sensitive: true
+    guided: true
+
+  - question_id: 11
+    question_type: fib
+    question_text: "To define a static method in Python, you use the <<@staticmethod>> decorator."
+    answer: "@staticmethod"
+    case_sensitive: true
+    guided: true
+
+  - question_id: 12
+    question_type: fib
+    question_text: "Static methods are ideal for <<utility>> functions that perform logic or validation without needing object state."
+    answer: "utility"
+    case_sensitive: false
+    guided: true
+
+  - question_id: 13
+    question_type: fib
+    question_text: "A static method cannot access <<self>> or <<cls>> because it does not rely on instance or class state."
+    answer: "self, cls"
+    case_sensitive: true
+    guided: true
+
+  - question_id: 14
+    question_type: fib
+    question_text: "One benefit of static methods is <<encapsulation>>, which keeps related logic within the class."
+    answer: "encapsulation"
+    case_sensitive: false
+    guided: true
+
+  - question_id: 15
+    question_type: fib
+    question_text: "Static methods can be called via the <<class>> without creating an instance."
+    answer: "class"
+    case_sensitive: false
     guided: true

@@ -95,3 +95,5 @@ questions:
 The above are examples of question types and content formatted in yaml format. The only question_text can be formatted in markdown if needed. For fib type question, the question_text cannot be formatted in markdown. Simple text will work for it. Keep guided true for question types that have a guided setting. 
 Based on the following text I need you to make some questions
 
+___
+In the question_text Mention the attributes and methods , what each function should do and the print statements to be added afterwords. Don't include the comments. Also mention the various attribute values to use. 
