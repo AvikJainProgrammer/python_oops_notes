@@ -1,0 +1,62 @@
+# Inheritance in Object-Oriented Programming
+
+## Overview
+- **Definition**: Inheritance allows a new class (subclass) to inherit attributes and methods from an existing class (superclass), enabling code reuse and the addition or override of features.
+- **Relationship**: Models an "is-a" relationship (e.g., a car is a vehicle, a bike is a vehicle).
+
+## Example: Vehicle Hierarchy
+- **Superclass**: `Vehicle`
+  - Attributes: `brand`, `model`, `year`
+  - Methods: `start()`, `stop()`
+- **Subclasses**: `Car`, `Bike`
+  - Inherit `Vehicle` attributes and methods.
+  - Add specific attributes (e.g., `number_of_doors` for `Car`, `number_of_wheels` for both).
+
+### Code
+```python
+class Vehicle:
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+
+    def start(self):
+        print("Vehicle is starting.")
+    
+    def stop(self):
+        print("Vehicle is stopping.")
+
+class Car(Vehicle):
+    def __init__(self, brand, model, year, number_of_doors, number_of_wheels):
+        super().__init__(brand, model, year)
+        self.number_of_doors = number_of_doors
+        self.number_of_wheels = number_of_wheels
+
+class Bike(Vehicle):
+    def __init__(self, brand, model, year, number_of_wheels):
+        super().__init__(brand, model, year)
+        self.number_of_wheels = number_of_wheels
+
+car = Car("Ford", "Focus", 2008, 5, 4)
+bike = Bike("Honda", "Scoopy", 2018, 2)
+print(car.__dict__)  # {'brand': 'Ford', 'model': 'Focus', 'year': 2008, 'number_of_doors': 5, 'number_of_wheels': 4}
+print(bike.__dict__)  # {'brand': 'Honda', 'model': 'Scoopy', 'year': 2018, 'number_of_wheels': 2}
+car.start()  # Vehicle is starting.
+bike.start()  # Vehicle is starting.
+```
+
+## Key Points
+- **Inheritance Mechanism**:
+  - Subclasses (`Car`, `Bike`) inherit from `Vehicle` using parentheses in Python (e.g., `class Car(Vehicle)`).
+  - `super().__init__()` calls the superclass’s `__init__` to initialize inherited attributes (`brand`, `model`, `year`).
+- **Benefits**:
+  - **Code Reuse**: Common attributes (`brand`, `model`, `year`) and methods (`start`, `stop`) are defined once in `Vehicle`.
+  - **Maintainability**: Changes to shared behavior (e.g., `start` method) are made in one place (`Vehicle`).
+  - **Extensibility**: Subclasses add specific attributes (e.g., `number_of_doors` for `Car`).
+- **Python Feature**:
+  - `__dict__` displays an object’s attributes as a dictionary.
+- **Foundation for Polymorphism**: Inheritance sets the stage for polymorphism, allowing subclasses to override or extend superclass behavior.
+
+## Summary
+- Inheritance enables subclasses to inherit and extend superclass functionality, reducing redundancy and improving maintainability.
+- Models "is-a" relationships, promoting a hierarchical class structure.

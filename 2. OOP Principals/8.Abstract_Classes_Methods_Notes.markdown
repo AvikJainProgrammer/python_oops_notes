@@ -1,0 +1,69 @@
+# Abstract Classes and Methods in Object-Oriented Programming
+
+## Overview
+- **Abstract Class**: A blueprint for other classes, defined using Python’s `abc.ABC` module, which cannot be instantiated directly.
+- **Abstract Method**: A method declared in an abstract class with no implementation (uses `pass`), requiring subclasses to provide their own implementation.
+- **Purpose**: Enforce a consistent interface across subclasses, promoting polymorphism and decoupling.
+
+## Example Context (from Previous Code)
+- **Abstract Class**: `NotificationService`
+  - Inherits from `ABC` to mark it as abstract.
+  - Defines an abstract method `send_notification`.
+- **Subclasses**: `EmailService`, `MobileService`
+  - Inherit from `NotificationService` and must implement `send_notification`.
+- **Usage in `Order`**: Accepts any `NotificationService` instance, enabling flexible notification handling via polymorphism.
+
+## Key Points
+- **Abstract Class**:
+  - Cannot be instantiated (e.g., `NotificationService()` would raise an error).
+  - Serves as a template, defining a common interface for subclasses (e.g., `EmailService`, `MobileService`).
+- **Abstract Method**:
+  - Declared with `@abstractmethod` decorator and `pass` in the body.
+  - Subclasses (e.g., `EmailService`, `MobileService`) must implement `send_notification`, ensuring a consistent API.
+- **Polymorphism**:
+  - Allows different notification services to be treated uniformly in the `Order` class via the `send_notification` method.
+  - Enables flexibility: New notification services can be added without modifying `Order`.
+- **Decoupling**:
+  - `Order` interacts with the abstract `NotificationService` interface, not specific implementations, reducing dependency on concrete classes.
+
+## Code Example (Recap)
+```python
+from abc import ABC, abstractmethod
+
+class NotificationService(ABC):
+    @abstractmethod
+    def send_notification(self, message: str):
+        pass
+
+class EmailService(NotificationService):
+    def send_notification(self, message: str):
+        print(f"Sending email: {message}")
+
+class MobileService(NotificationService):
+    def send_notification(self, message: str):
+        print(f"Sending text message: {message}")
+
+class Order:
+    def __init__(self, notification_service: NotificationService):
+        self.notification_service = notification_service
+
+    def create(self):
+        self.notification_service.send_notification(
+            "Hi, your order was placed successfully and will be with you within 2-5 working days"
+        )
+
+order = Order(EmailService())
+order.create()  # Sending email: ...
+order2 = Order(MobileService())
+order2.create()  # Sending text message: ...
+```
+
+## Benefits
+- **Consistency**: Ensures all subclasses implement required methods (e.g., `send_notification`).
+- **Flexibility**: New notification services can be added without changing `Order`.
+- **Polymorphism**: Enables uniform treatment of different notification types.
+- **Maintainability**: Changes to specific notification services don’t affect `Order`, as it relies on the abstract interface.
+
+## Summary
+- Abstract classes and methods define a common interface, enforcing implementation in subclasses.
+- They support polymorphism by allowing diverse objects to be treated uniformly, enhancing flexibility and reducing coupling in the system.

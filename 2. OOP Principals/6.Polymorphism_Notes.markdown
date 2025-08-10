@@ -1,0 +1,127 @@
+# Polymorphism in Object-Oriented Programming
+
+## Overview
+- **Definition**: Polymorphism ("many forms") allows objects of different classes to be treated as instances of a common superclass, enabling consistent method calls despite differing implementations.
+- **Purpose**: Simplifies code by allowing generic handling of objects, improving flexibility and extensibility.
+
+## Naive Example: No Polymorphism
+- **Classes**: `Car`, `Motorcycle`
+  - Independent classes with no shared superclass.
+  - `Car` has `start()`, `stop()`; `Motorcycle` has `start_bike()`, `stop_bike()`.
+- **Issue**: No common interface, requiring type checking to handle different vehicle types.
+- **Code**:
+  ```python
+  class Car:
+      def __init__(self, brand, model, year, number_of_doors):
+          self.brand = brand
+          self.model = model
+          self.year = year
+          self.number_of_doors = number_of_doors
+      def start(self):
+          print("Car is starting.")
+      def stop(self):
+          print("Car is stopping.")
+
+  class Motorcycle:
+      def __init__(self, brand, model, year):
+          self.brand = brand
+          self.model = model
+          self.year = year
+      def start_bike(self):
+          print("Motorcycle is starting.")
+      def stop_bike(self):
+          print("Motorcycle is stopping.")
+
+  class RandomClass:
+      someAttribute = "Hello there"
+
+  vehicles = [Car("Ford", "Focus", 2008, 5), Motorcycle("Honda", "Scoopy", 2018), RandomClass()]
+  for vehicle in vehicles:
+      if isinstance(vehicle, Car):
+          print(f"Inspecting {vehicle.brand} {vehicle.model} ({type(vehicle).__name__})")
+          vehicle.start()
+          vehicle.stop()
+      elif isinstance(vehicle, Motorcycle):
+          print(f"Inspecting {vehicle.brand} {vehicle.model} ({type(vehicle).__name__})")
+          vehicle.start_bike()
+          vehicle.stop_bike()
+      else:
+          raise Exception("Object is not a valid vehicle")
+  ```
+- **Problems**:
+  - Inconsistent method names (`start` vs. `start_bike`) require type-specific logic.
+  - Adding new vehicle types (e.g., `Plane`) necessitates modifying inspection logic with additional `if` statements.
+  - Code is error-prone and hard to maintain due to repeated type checks.
+
+## Refactored Example: With Polymorphism
+- **Superclass**: `Vehicle`
+  - Defines common attributes (`brand`, `model`, `year`) and methods (`start`, `stop`).
+- **Subclasses**: `Car`, `Motorcycle`, `Plane`
+  - Inherit from `Vehicle`, ensuring consistent method names.
+  - Override `start` and `stop` for type-specific behavior.
+- **Code**:
+  ```python
+  class Vehicle:
+      def __init__(self, brand, model, year):
+          self.brand = brand
+          self.model = model
+          self.year = year
+      def start(self):
+          print("Vehicle is starting.")
+      def stop(self):
+          print("Vehicle is stopping.")
+
+  class Car(Vehicle):
+      def __init__(self, brand, model, year, number_of_doors):
+          super().__init__(brand, model, year)
+          self.number_of_doors = number_of_doors
+      def start(self):
+          print("Car is starting.")
+      def stop(self):
+          print("Car is stopping.")
+
+  class Motorcycle(Vehicle):
+      def __init__(self, brand, model, year):
+          super().__init__(brand, model, year)
+      def start(self):
+          print("Motorcycle is starting.")
+      def stop(self):
+          print("Motorcycle is stopping.")
+
+  class Plane(Vehicle):
+      def __init__(self, brand, model, year, number_of_doors):
+          super().__init__(brand, model, year)
+          self.number_of_doors = number_of_doors
+      def start(self):
+          print("Plane is starting.")
+      def stop(self):
+          print("Plane is stopping.")
+
+  class RandomClass:
+      someAttribute = "Hello there"
+
+  vehicles = [Car("Ford", "Focus", 2008, 5), Motorcycle("Honda", "Scoopy", 2018), Plane("Boeing", "747", 2015, 16), RandomClass()]
+  for vehicle in vehicles:
+      if isinstance(vehicle, Vehicle):
+          print(f"Inspecting {vehicle.brand} {vehicle.model} ({type(vehicle).__name__})")
+          vehicle.start()
+          vehicle.stop()
+      else:
+          raise Exception("Object is not a valid vehicle")
+  ```
+- **Benefits**:
+  - **Unified Interface**: All vehicles share `start` and `stop` methods, guaranteed by the `Vehicle` superclass.
+  - **Simplified Logic**: Single `isinstance(vehicle, Vehicle)` check replaces multiple type checks.
+  - **Extensibility**: Adding new vehicle types (e.g., `Plane`) requires no changes to inspection logic.
+  - **Dynamic Dispatch**: Polymorphism dynamically invokes the appropriate `start`/`stop` method based on the object’s type.
+
+## Key Points
+- **Polymorphism**: Allows treating different vehicle types as `Vehicle` instances, calling shared methods without knowing specific types.
+- **Method Override**: Subclasses can provide specific implementations of inherited methods (e.g., `Car.start` vs. `Motorcycle.start`).
+- **Type Hinting**: Using a list of `Vehicle` objects ensures all items have required attributes and methods, reducing the need for type checks.
+- **Maintainability**: New vehicle types can be added without modifying existing client code, enhancing flexibility.
+- **Error Handling**: Non-vehicle objects are caught with a single check, maintaining robustness.
+
+## Summary
+- Polymorphism enables generic, flexible code by treating diverse objects uniformly through a shared superclass interface.
+- Combined with inheritance, it ensures consistency and simplifies maintenance, making it easy to extend systems with new types.

@@ -1,0 +1,17 @@
+# Encapsulation Usage Notes
+
+## Overview
+- **Purpose of Encapsulation**: Hides internal implementation details of the `BankAccount` class, exposing only a simple, intuitive public interface for users (other developers, classes, or program files).
+
+## Key Points
+- **Protected Data**: The `balance` attribute is marked as protected (e.g., `_balance`), preventing direct access by users.
+- **Controlled Access**: Users interact with the class through public methods (`deposit`, `withdraw`) and properties (e.g., `balance` getter), ensuring program rules are enforced.
+  - Prevents invalid operations (e.g., withdrawing more than the balance or depositing a negative amount, which raises a `ValueError`).
+- **Simplified Interaction**: Users call intuitive methods like `account.withdraw(amount)` or `account.deposit(amount)` without needing to understand the internal logic.
+- **Abstraction**: Encapsulation hides complex implementation details, allowing users to focus on high-level functionality.
+- **Public Interface**: Users only need to know the public methods and properties to use the `BankAccount` class effectively.
+
+## Benefits
+- **Data Integrity**: Encapsulated logic ensures rules (e.g., no negative balance) are not violated.
+- **Simplified API**: Provides a clear, user-friendly interface, abstracting away complexity.
+- **Separation of Concerns**: Clear distinction between the public interface and internal implementation, enhancing maintainability and usability.

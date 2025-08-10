@@ -1,0 +1,66 @@
+# Composition vs. Inheritance in Object-Oriented Programming
+
+## Overview
+- **Composition** and **Inheritance** are two approaches to structuring classes, each suited to different scenarios based on relationships and design goals.
+- **Key Question**: When should you use composition versus inheritance?
+
+## Composition
+- **Definition**: Builds complex objects by assembling smaller, independent components (has-a relationship).
+- **When to Use**:
+  - **Flexibility**: When constructing objects from reusable, modular components (e.g., a `Car` has an `Engine`, `Wheels`, `Chassis`, `Seats`).
+  - **Has-a Relationship**: When there’s no clear “is-a” relationship (e.g., a car *has* an engine, not *is* an engine).
+  - **Avoiding Inheritance Limitations**: To prevent tight coupling and the fragile base class problem (where changes to a superclass break subclasses).
+- **Example Context** (from previous code):
+  - `Car` class composes `Engine`, `Wheels`, `Chassis`, and `Seats` as protected attributes, delegating tasks to their methods.
+  - Users call `Car.start()` without needing to know component details, promoting modularity and abstraction.
+
+## Inheritance
+- **Definition**: Creates new classes that inherit attributes and methods from a superclass (is-a relationship).
+- **When to Use**:
+  - **Is-a Relationship**: When a subclass is a specific type of a superclass (e.g., a `Car` is a `Vehicle`, a `Motorcycle` is a `Vehicle`).
+  - **Code Reuse**: When shared properties and behaviors can be defined in a superclass to avoid duplication (e.g., `Vehicle` provides `brand`, `model`, `year`, `start()`, `stop()`).
+  - **Polymorphism**: When subclasses can be treated uniformly as instances of their superclass (e.g., treating `Car` and `Motorcycle` as `Vehicle` in a loop).
+- **Example Context** (from previous code):
+  - `Car` and `Motorcycle` inherit from `Vehicle`, sharing its attributes and methods while overriding `start()` and `stop()` for specific behavior.
+  - Enables polymorphic inspection of vehicles without type-specific logic.
+
+## Composition vs. Inheritance
+- **Composition**:
+  - **Pros**:
+    - Greater flexibility: Components can be swapped or modified independently.
+    - Looser coupling: Changes to components don’t affect the containing class.
+    - Avoids fragile base class problem: Subclass dependencies on superclass changes are eliminated.
+  - **Cons**:
+    - Requires more setup to define and delegate to components.
+  - **Use Case**: When building complex objects from independent parts with no hierarchical relationship.
+- **Inheritance**:
+  - **Pros**:
+    - Simplifies code reuse for shared behavior and attributes.
+    - Supports polymorphism, allowing uniform treatment of subclasses.
+  - **Cons**:
+    - Tight coupling: Changes to the superclass can break subclasses (fragile base class problem).
+    - Less flexible for non-hierarchical relationships.
+  - **Use Case**: When a clear hierarchical “is-a” relationship exists.
+
+## Fragile Base Class Problem
+- **Definition**: Modifications to a superclass (e.g., changing a method’s implementation) can unintentionally break subclasses that rely on it.
+- **Why Composition is Preferred**: Composition avoids this by using independent components, reducing the risk of cascading changes.
+
+## Polymorphism with Both Approaches
+- **Composition**: Achieves polymorphism through interfaces (e.g., `NotificationService` with `send_notification` method, allowing `EmailService` or `MobileService` to be used interchangeably).
+- **Inheritance**: Achieves polymorphism by treating subclasses as their superclass (e.g., `Car` and `Motorcycle` as `Vehicle`).
+
+## Key Guidelines
+- **Use Composition**:
+  - For has-a relationships (e.g., `Car` has an `Engine`).
+  - When flexibility and loose coupling are priorities.
+  - To avoid inheritance-related issues like tight coupling.
+- **Use Inheritance**:
+  - For clear is-a relationships (e.g., `Car` is a `Vehicle`).
+  - When code reuse and polymorphic behavior via a superclass are needed.
+- **Preference**: Favor composition over inheritance to minimize coupling and enhance maintainability, unless inheritance is clearly justified.
+
+## Summary
+- **Composition** builds flexible, modular systems with has-a relationships, avoiding tight coupling.
+- **Inheritance** promotes code reuse and polymorphism for is-a relationships but risks fragility.
+- Choose based on the relationship type and desired flexibility, with composition often being the safer, more maintainable option.

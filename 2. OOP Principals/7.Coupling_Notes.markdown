@@ -1,0 +1,88 @@
+# Coupling in Object-Oriented Programming
+
+## Overview
+- **Definition**: Coupling refers to the degree of dependency between classes or modules.
+  - **High Coupling**: Classes are tightly interconnected, making modifications difficult without affecting others.
+  - **Low Coupling**: Classes have loose connections, allowing independent modification and greater flexibility.
+
+## Naive Example: High Coupling
+- **Classes**:
+  - `EmailSender`: Sends email notifications.
+  - `Order`: Creates orders and directly instantiates `EmailSender` for notifications.
+- **Code**:
+  ```python
+  class EmailSender:
+      def send(self, message):
+          print(f"Sending email: {message}")
+
+  class Order:
+      def create(self):
+          # Order creation logic (e.g., validate details, check stock, save to database)
+          email = EmailSender()
+          email.send("Hi, your order was placed successfully and will be with you within 2-5 working days")
+
+  order = Order()
+  order.create()
+  ```
+- **Problem**:
+  - `Order` is tightly coupled to `EmailSender` by directly creating its instance.
+  - Changing `EmailSender` (e.g., modifying its interface) or switching to another notification method (e.g., SMS) requires altering the `Order` class, violating the open/closed principle.
+
+## Refactored Example: Low Coupling
+- **Solution**: Introduce an abstract `NotificationService` class and use dependency injection to decouple `Order` from specific notification implementations.
+- **Classes**:
+  - `NotificationService` (Abstract): Defines a common interface with an abstract `send_notification` method.
+  - `EmailService`, `MobileService`: Concrete implementations of `NotificationService`.
+  - `Order`: Accepts a `NotificationService` instance via dependency injection.
+- **Code**:
+  ```python
+  from abc import ABC, abstractmethod
+
+  class NotificationService(ABC):
+      @abstractmethod
+      def send_notification(self, message: str):
+          pass
+
+  class EmailService(NotificationService):
+      def send_notification(self, message: str):
+          print(f"Sending email: {message}")
+
+  class MobileService(NotificationService):
+      def send_notification(self, message: str):
+          print(f"Sending text message: {message}")
+
+  class Order:
+      def __init__(self, notification_service: NotificationService):
+          self.notification_service = notification_service
+
+      def create(self):
+          # Order creation logic
+          self.notification_service.send_notification(
+              "Hi, your order was placed successfully and will be with you within 2-5 working days"
+          )
+
+  order = Order(EmailService())
+  order.create()  # Sending email: ...
+  order2 = Order(MobileService())
+  order2.create()  # Sending text message: ...
+  ```
+- **Benefits**:
+  - **Decoupling**: `Order` depends on the abstract `NotificationService` interface, not concrete implementations like `EmailService`.
+  - **Flexibility**: New notification types (e.g., `FaxService`) can be added without modifying `Order`.
+  - **Type Safety**: Python type hinting ensures `notification_service` is a `NotificationService` instance.
+  - **Maintainability**: Changes to notification implementations don’t affect `Order`.
+
+## Abstract Classes and Methods
+- **Abstract Base Class (ABC)**: A class (using Python’s `abc.ABC`) that cannot be instantiated and defines a blueprint for subclasses.
+- **Abstract Method**: A method (marked with `@abstractmethod`) that must be implemented by any concrete subclass, ensuring a consistent interface (e.g., `send_notification`).
+- **Role in Example**: `NotificationService` enforces that all notification services implement `send_notification`, enabling polymorphism and decoupling.
+
+## Key Points
+- **High Coupling**: Direct dependencies (e.g., `Order` creating `EmailSender`) make code brittle and hard to modify.
+- **Low Coupling**: Using an abstract interface (`NotificationService`) and dependency injection allows `Order` to work with any notification service without modification.
+- **Polymorphism**: Subclasses (`EmailService`, `MobileService`) provide specific implementations of `send_notification`, used interchangeably by `Order`.
+- **Extensibility**: New notification services can be added without changing `Order`, adhering to the open/closed principle.
+
+## Summary
+- Reducing coupling through abstraction and dependency injection enhances flexibility, maintainability, and scalability.
+- Abstract classes and methods enforce consistent interfaces, supporting polymorphic behavior and decoupling.
