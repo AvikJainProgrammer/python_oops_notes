@@ -1,0 +1,89 @@
+# Single Responsibility Principle (SRP)
+
+## Overview
+- **Definition**: A class should have only one reason to change, meaning it should have a single, well-defined responsibility or purpose.
+- **Purpose**: Encourages focused classes that perform one task, improving code clarity, maintainability, and testability.
+
+## Naive Example: Violating SRP
+- **Classes**:
+  - `EmailSender`: Sends emails (single responsibility, fine).
+  - `User`: Manages user data (username, email) *and* handles user registration, including sending emails.
+- **Code**:
+  ```python
+  class EmailSender:
+      def send_email(self, subject, recipient):
+          print(f"Sending email to {recipient}: {subject}")
+
+  class User:
+      def __init__(self, username, email):
+          self.username = username
+          self.email = email
+
+      def register(self):
+          print(f"Registering user: {self.username}")
+          email_sender = EmailSender()
+          email_sender.send_email("Welcome to our platform!", self.email)
+
+  user = User(username="john_doe", email="john.doe@example.com")
+  user.register()
+  ```
+- **Problem**:
+  - `User` class violates SRP by having two responsibilities:
+    1. Managing user data (e.g., `username`, `email`).
+    2. Handling registration logic, including email notifications.
+  - **Reasons to Change**:
+    - Changes to user data (e.g., adding/removing fields like `first_name`).
+    - Changes to registration logic (e.g., checking for existing users by username instead of email).
+  - Tight coupling to `EmailSender` makes it hard to modify notification logic without altering `User`.
+
+## Refactored Example: Adhering to SRP
+- **Classes**:
+  - `EmailSender`: Unchanged, responsible only for sending emails.
+  - `User`: Solely manages user data (`username`, `email`).
+  - `UserService`: Handles user-related services (e.g., registration, updates, deletion).
+- **Code**:
+  ```python
+  class EmailSender:
+      def send_email(self, subject, recipient):
+          print(f"Sending email to {recipient}: {subject}")
+
+  class User:
+      def __init__(self, username, email):
+          self.username = username
+          self.email = email
+
+  class UserService:
+      def register(self, user):
+          print(f"Registering user: {user.username}")
+          email_sender = EmailSender()
+          email_sender.send_email("Welcome to our platform!", user.email)
+
+      def update(self, user):
+          print(f"Updating user: {user.username}")
+
+      def delete(self, user):
+          print(f"Deleting user: {user.username}")
+
+  user = User(username="john_doe", email="john.doe@example.com")
+  user_service = UserService()
+  user_service.register(user)
+  ```
+- **Benefits**:
+  - **Single Responsibility**:
+    - `User`: Manages user data only (one reason to change: data structure updates).
+    - `UserService`: Handles user-related operations (one reason to change: service logic updates).
+  - **Decoupling**: `User` no longer depends on `EmailSender`; `UserService` manages notification logic.
+  - **Extensibility**: `UserService` can add methods (e.g., `update`, `delete`) without modifying `User`.
+  - **Maintainability**: Changes to registration logic or data management are isolated to their respective classes.
+
+## Key Points
+- **SRP**: Ensures each class has one focused responsibility, reducing complexity and coupling.
+- **Violation**: Combining unrelated tasks (e.g., data management and registration) in one class leads to multiple reasons to change.
+- **Refactoring**: Split responsibilities into separate classes (e.g., `User` for data, `UserService` for operations).
+- **Advantages**:
+  - Easier to understand, maintain, and test due to focused classes.
+  - Changes to one responsibility (e.g., registration logic) don’t affect unrelated functionality (e.g., user data).
+
+## Summary
+- SRP promotes modular, maintainable code by assigning each class a single purpose.
+- Refactoring to separate concerns (e.g., data vs. services) reduces coupling and enhances flexibility, making systems easier to extend and test.

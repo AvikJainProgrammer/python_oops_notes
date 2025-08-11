@@ -1,0 +1,120 @@
+# Dependency Inversion Principle (DIP)
+
+## Overview
+- **Definition**: High-level modules should not depend on low-level modules; both should depend on abstractions. Additionally, abstractions should not depend on details; details should depend on abstractions.
+- **Purpose**: Promotes decoupling by ensuring high-level modules rely on interfaces or abstract classes rather than concrete implementations, enhancing flexibility and testability.
+- **Python Context**: Uses abstract base classes (`ABC`) to define abstractions, as Python lacks explicit interfaces.
+
+## Key Concepts
+- **High-Level Modules**: Represent main functionality or business logic (e.g., `Car` orchestrates vehicle behavior).
+- **Low-Level Modules**: Provide specific functionality or services (e.g., `Engine` handles engine operations).
+- **Abstraction**: An interface or abstract class (e.g., `Engine` ABC) defining a contract without implementation details.
+- **Dependency Injection**: Passing dependencies (e.g., a concrete `Engine`) to a high-level module at runtime, reducing coupling.
+
+## Naive Example: Violating DIP
+- **Classes**:
+  - `Engine`: Low-level module with a `start` method.
+  - `Car`: High-level module that directly instantiates `Engine`.
+- **Code**:
+  ```python
+  class Engine:
+      def start(self):
+          print("Engine started")
+
+  class Car:
+      def __init__(self):
+          self.engine = Engine()  # Tightly coupled to concrete Engine
+
+      def start(self):
+          self.engine.start()
+          print("Car started")
+
+  car = Car()
+  car.start()
+  ```
+- **Problem**:
+  - **DIP Violation**: `Car` (high-level) depends directly on the concrete `Engine` (low-level), creating tight coupling.
+  - **Issues**:
+    - Changing to a different engine (e.g., `FastEngine`) requires modifying `Car`’s `__init__`, violating the Open/Closed Principle (OCP).
+    - If `Engine`’s implementation changes, `Car` may be affected, reducing maintainability.
+  - **UML**: `Car` → `Engine` (direct dependency on concrete class).
+
+## Refactored Example: Adhering to DIP
+- **Solution**: Introduce an abstract `Engine` class, making `Car` depend on the abstraction via dependency injection.
+- **Classes**:
+  - `Engine` (Abstract): Defines `start` as an abstract method.
+  - `BasicEngine`, `FastEngine`: Concrete implementations of `Engine`.
+  - `Car`: Accepts any `Engine` abstraction via dependency injection.
+- **Code**:
+  ```python
+  from abc import ABC, abstractmethod
+
+  class Engine(ABC):
+      @abstractmethod
+      def start(self):
+          pass
+
+  class BasicEngine(Engine):
+      def start(self):
+          print("Basic engine started")
+
+  class FastEngine(Engine):
+      def start(self):
+          print("Activated power boost!")
+          print("Fast engine started")
+
+  class Car:
+      def __init__(self, engine: Engine):
+          self.engine = engine
+
+      def start(self):
+          self.engine.start()
+          print("Car started")
+
+  fast_engine = FastEngine()
+  car = Car(fast_engine)
+  car.start()
+
+  basic_engine = BasicEngine()
+  car2 = Car(basic_engine)
+  car2.start()
+  ```
+- **Output**:
+  ```
+  Activated power boost!
+  Fast engine started
+  Car started
+  Basic engine started
+  Car started
+  ```
+- **Benefits**:
+  - **DIP Compliance**: `Car` depends on the `Engine` abstraction, not concrete implementations (`BasicEngine`, `FastEngine`).
+  - **Loose Coupling**: `Car` can work with any `Engine` subclass without modification, adhering to OCP.
+  - **Flexibility**: New engine types can be added (e.g., `TurboEngine`) without changing `Car`.
+  - **Testability**: Dependencies can be mocked or swapped for testing.
+  - **UML**: `Car` → `Engine` (abstract) ← `BasicEngine`, `FastEngine`.
+
+## High-Level vs. Low-Level Modules
+- **High-Level Module** (`Car`):
+  - Represents main functionality or business logic.
+  - Orchestrates interactions between components.
+  - Abstract in nature, focusing on overall behavior (e.g., starting the car).
+- **Low-Level Module** (`Engine`):
+  - Provides specific functionality or services.
+  - Handles implementation details (e.g., engine ignition).
+  - Concrete in nature, encapsulating operational specifics.
+
+## Key Points
+- **DIP Violation**: High-level modules directly instantiating low-level modules create tight coupling, making changes risky and violating OCP.
+- **Solution**: Introduce abstractions (e.g., `Engine` ABC) and use dependency injection to pass concrete implementations at runtime.
+- **Dependency Injection**: Injecting dependencies (e.g., `FastEngine` into `Car`) allows flexibility and decouples modules.
+- **Benefits**:
+  - Loose coupling between high- and low-level modules.
+  - Easier to extend with new implementations (e.g., new engine types).
+  - Improved testability and maintainability.
+
+## Summary
+- **DIP**: Ensures high- and low-level modules depend on abstractions, not concrete classes, using abstract base classes and dependency injection.
+- **Violation Example**: `Car` directly creates `Engine`, leading to tight coupling and OCP violations.
+- **Fix**: `Car` depends on an abstract `Engine`, with concrete engines injected at runtime.
+- **Outcome**: Flexible, testable, and maintainable code with reduced coupling and adherence to SOLID principles.

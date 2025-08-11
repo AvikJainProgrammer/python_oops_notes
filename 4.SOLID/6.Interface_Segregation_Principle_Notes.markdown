@@ -1,0 +1,132 @@
+# Interface Segregation Principle (ISP)
+
+## Overview
+- **Definition**: Clients should not be forced to depend on interfaces they do not use.
+- **Purpose**: Promotes fine-grained, client-specific interfaces (or abstract base classes in Python) to avoid implementing unnecessary methods, resulting in cleaner, more maintainable code.
+- **Python Context**: Python lacks explicit interfaces (like Java/C#), but abstract base classes (`ABC`) from the `abc` module serve the same purpose by defining methods that subclasses must implement.
+
+## Naive Example: Violating ISP
+- **Classes**:
+  - `Shape` (Abstract): Defines `area` and `volume` abstract methods, assuming all shapes need both.
+  - `Circle`: Implements `Shape`, but raises `NotImplementedError` for `volume` (as 2D shapes don’t have volume).
+  - `Sphere`: Implements `Shape`, providing both `area` and `volume`.
+- **Code**:
+  ```python
+  from abc import ABC, abstractmethod
+  import math
+
+  class Shape(ABC):
+      @abstractmethod
+      def area(self):
+          pass
+
+      @abstractmethod
+      def volume(self):
+          pass
+
+  class Circle(Shape):
+      def __init__(self, radius):
+          self.radius = radius
+
+      def area(self):
+          return math.pi * (self.radius**2)
+
+      def volume(self):
+          raise NotImplementedError("Volume not applicable for 2D shapes.")
+
+  class Sphere(Shape):
+      def __init__(self, radius):
+          self.radius = radius
+
+      def area(self):
+          return 4 * math.pi * (self.radius**2)
+
+      def volume(self):
+          return (4 / 3) * math.pi * (self.radius**3)
+
+  circle = Circle(10)
+  print(f"Circle area: {circle.area()}")  # Output: 314.1592653589793
+  print(f"Circle volume: {circle.volume()}")  # Raises NotImplementedError
+
+  sphere = Sphere(10)
+  print(f"Sphere surface area: {sphere.area()}")  # Output: 1256.6370614359173
+  print(f"Sphere volume: {sphere.volume()}")  # Output: 4188.790204786391
+  ```
+- **Problem**:
+  - **ISP Violation**: `Circle` (a 2D shape) is forced to implement `volume`, a method it doesn’t need, leading to a `NotImplementedError`.
+  - **Issues**:
+    - Clients using `Circle` may call `volume`, expecting valid behavior, but get an exception, introducing potential bugs.
+    - The linter (e.g., VSCode) doesn’t flag the `volume` call, as `Circle` technically implements it, masking the issue until runtime.
+    - `Shape` is a "fat interface," forcing all subclasses to implement methods irrelevant to some (e.g., 2D shapes).
+
+## Refactored Example: Adhering to ISP
+- **Solution**: Split the `Shape` interface into two focused abstract base classes: `Shape2D` (for area) and `Shape3D` (for area and volume).
+- **Classes**:
+  - `Shape2D` (Abstract): Defines `area` only, for 2D shapes.
+  - `Shape3D` (Abstract): Defines `area` and `volume`, for 3D shapes.
+  - `Circle`: Inherits `Shape2D`, implementing only `area`.
+  - `Sphere`: Inherits `Shape3D`, implementing both `area` and `volume`.
+- **Code**:
+  ```python
+  from abc import ABC, abstractmethod
+  import math
+
+  class Shape2D(ABC):
+      @abstractmethod
+      def area(self):
+          pass
+
+  class Shape3D(ABC):
+      @abstractmethod
+      def area(self):
+          pass
+
+      @abstractmethod
+      def volume(self):
+          pass
+
+  class Circle(Shape2D):
+      def __init__(self, radius):
+          self.radius = radius
+
+      def area(self):
+          return math.pi * (self.radius**2)
+
+  class Sphere(Shape3D):
+      def __init__(self, radius):
+          self.radius = radius
+
+      def area(self):
+          return 4 * math.pi * (self.radius**2)
+
+      def volume(self):
+          return (4 / 3) * math.pi * (self.radius**3)
+
+  circle = Circle(10)
+  print(f"Circle area: {circle.area()}")  # Output: 314.1592653589793
+  # print(f"Circle volume: {circle.volume()}")  # Linter flags error: 'volume' not found
+
+  sphere = Sphere(10)
+  print(f"Sphere surface area: {sphere.area()}")  # Output: 1256.6370614359173
+  print(f"Sphere volume: {sphere.volume()}")  # Output: 4188.790204786391
+  ```
+- **Benefits**:
+  - **ISP Compliance**: `Circle` only implements `area` (via `Shape2D`), not forced to implement irrelevant `volume`.
+  - **Error Prevention**: Linters (e.g., VSCode) flag attempts to call `volume` on `Circle`, catching issues at development time.
+  - **Focused Interfaces**: `Shape2D` and `Shape3D` are fine-grained, containing only methods relevant to their clients (2D vs. 3D shapes).
+  - **Maintainability**: Clients depend only on necessary methods, reducing complexity and improving code reuse.
+
+## Key Points
+- **ISP Violation**: A single `Shape` interface forces all shapes to implement both `area` and `volume`, even when `volume` is irrelevant (e.g., for `Circle`), leading to runtime errors or unnecessary implementations.
+- **Solution**: Segregate interfaces into smaller, client-specific ones (`Shape2D`, `Shape3D`), ensuring subclasses implement only relevant methods.
+- **Python Context**: Use `ABC` to create interfaces, designing them to be minimal and focused to adhere to ISP.
+- **Benefits**:
+  - Prevents bugs by avoiding forced implementation of unused methods.
+  - Enhances code clarity and flexibility by tailoring interfaces to client needs.
+  - Improves maintainability and reduces the risk of runtime errors.
+
+## Summary
+- **ISP**: Ensures clients depend only on relevant interfaces, avoiding "fat interfaces" with unnecessary methods.
+- **Violation Example**: A single `Shape` interface forces `Circle` to implement `volume`, causing errors or redundant code.
+- **Fix**: Split into `Shape2D` (area only) and `Shape3D` (area and volume), aligning interfaces with client needs.
+- **Outcome**: Cleaner, more maintainable code with reduced error risks and improved flexibility.

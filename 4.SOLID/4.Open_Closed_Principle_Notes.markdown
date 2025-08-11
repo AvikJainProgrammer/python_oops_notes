@@ -1,0 +1,113 @@
+# Open/Closed Principle (OCP)
+
+## Overview
+- **Definition**: Software entities (classes, modules, functions) should be **open for extension** but **closed for modification**.
+  - **Open for Extension**: New functionality can be added by creating new classes or modules.
+  - **Closed for Modification**: Existing code should not need changes to accommodate new functionality.
+- **Purpose**: Promotes maintainable, loosely coupled systems by leveraging abstraction and polymorphism to extend behavior without altering existing code.
+
+## Naive Example: Violating OCP
+- **Classes**:
+  - `ShapeType` (Enum): Defines shape types (`CIRCLE`, `RECTANGLE`).
+  - `Shape`: Handles all shapes with a single class, using `shape_type` to determine behavior.
+- **Code**:
+  ```python
+  from enum import Enum
+  import math
+
+  class ShapeType(Enum):
+      CIRCLE = "circle"
+      RECTANGLE = "rectangle"
+
+  class Shape:
+      def __init__(self, shape_type: ShapeType, radius: float = 0, height: float = 0, width: float = 0):
+          self.type = shape_type
+          self.radius = radius
+          self.height = height
+          self.width = width
+
+      def calculate_area(self) -> float:
+          if self.type == ShapeType.CIRCLE:
+              return math.pi * self.radius**2
+          elif self.type == ShapeType.RECTANGLE:
+              return self.height * self.width
+          else:
+              raise ValueError("Unsupported shape type.")
+
+  circle = Shape(ShapeType.CIRCLE, radius=5)
+  rectangle = Shape(ShapeType.RECTANGLE, height=4, width=6)
+  print(f"Circle Area: {circle.calculate_area()}")  # Circle Area: 78.53981633974483
+  print(f"Rectangle Area: {rectangle.calculate_area()}")  # Rectangle Area: 24
+  ```
+- **Problem**:
+  - Violates OCP: Adding a new shape (e.g., triangle) requires modifying `Shape.calculate_area` to include new logic (e.g., `elif self.type == ShapeType.TRIANGLE`).
+  - **Issues**:
+    - Modifying existing code risks introducing bugs.
+    - Tight coupling between shape types and area calculation logic.
+    - Not scalable, as each new shape requires changes to the `Shape` class.
+
+## Refactored Example: Adhering to OCP
+- **Solution**: Use an abstract `Shape` class with polymorphism, allowing new shapes to be added via new classes without modifying existing code.
+- **Classes**:
+  - `Shape` (Abstract): Defines `calculate_area` as an abstract method.
+  - `Circle`, `Rectangle`: Concrete classes implementing `calculate_area`.
+- **Code**:
+  ```python
+  from abc import ABC, abstractmethod
+  import math
+
+  class Shape(ABC):
+      @abstractmethod
+      def calculate_area(self) -> float:
+          pass
+
+  class Circle(Shape):
+      def __init__(self, radius: float):
+          self.radius = radius
+
+      def calculate_area(self) -> float:
+          return math.pi * self.radius**2
+
+  class Rectangle(Shape):
+      def __init__(self, width: float, height: float):
+          self.width = width
+          self.height = height
+
+      def calculate_area(self) -> float:
+          return self.height * self.width
+
+  circle = Circle(10)
+  rectangle = Rectangle(5, 10)
+  print(f"Circle area: {circle.calculate_area()}")  # Circle area: 314.1592653589793
+  print(f"Rectangle area: {rectangle.calculate_area()}")  # Rectangle area: 50
+  ```
+- **Benefits**:
+  - **Open for Extension**: New shapes (e.g., `Triangle`) can be added by creating a new class that inherits `Shape` and implements `calculate_area`, without touching existing code.
+  - **Closed for Modification**: The `Shape`, `Circle`, and `Rectangle` classes remain unchanged when adding new shapes.
+  - **Polymorphism**: All shapes share a common interface (`calculate_area`), enabling uniform treatment.
+  - **Maintainability**: Reduces risk of bugs, as existing code isn’t modified.
+
+## Key Points
+- **Violation**: Using a single class with conditional logic (e.g., `if` statements for shape types) requires modification for new shapes, breaking OCP.
+- **Solution**: Abstract classes and polymorphism allow new functionality (e.g., new shapes) to be added via new classes, preserving existing code.
+- **Extensibility Example**:
+  - To add a `Triangle` class:
+    ```python
+    class Triangle(Shape):
+        def __init__(self, base: float, height: float):
+            self.base = base
+            self.height = height
+
+        def calculate_area(self) -> float:
+            return 0.5 * self.base * self.height
+    ```
+    - No changes needed to `Shape`, `Circle`, or `Rectangle`.
+- **Tools Used**:
+  - **Abstract Base Class (ABC)**: Enforces implementation of `calculate_area` in subclasses.
+  - **Polymorphism**: Ensures shapes can be treated uniformly via the `Shape` interface.
+  - **Type Hinting**: Clarifies expected types (e.g., `float` for radius, height).
+
+## Summary
+- **OCP**: Enables extension of functionality (new shapes) without modifying existing code, reducing bugs and improving scalability.
+- **Approach**: Use abstract classes and polymorphism to define extensible interfaces.
+- **Outcome**: Loosely coupled, maintainable systems where new features are added by extending, not altering, existing code.
