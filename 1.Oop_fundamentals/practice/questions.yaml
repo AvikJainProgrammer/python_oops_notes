@@ -478,6 +478,7 @@ questions:
       user1.set_email("danny@outlook.com")
 
       print(user1.get_email())  # Output: danny@outlook.com
+    guided: true
   - question_id: 26
     question_type: fill_in_the_blank
     language: python

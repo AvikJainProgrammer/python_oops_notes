@@ -347,6 +347,7 @@ questions:
     dantheman\", \"dan@gmail.com\", \"123\")\n\nprint(user1.get_email())  # Output:\
     \ dan@gmail.com\n\nuser1.set_email(\"danny@outlook.com\")\n\nprint(user1.get_email())\
     \  # Output: danny@outlook.com\n"
+  guided: true
 - question_id: 32
   question_type: fill_in_the_blank
   language: python
