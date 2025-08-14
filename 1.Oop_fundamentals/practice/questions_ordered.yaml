@@ -394,26 +394,12 @@ questions:
 - question_id: 33
   question_type: code_fib
   language: python
-  question_text: '`Fill in the missing parts to complete the program with logging
-    and validation in getters/setters:`
-
-
-    ```
-
-    logging message : "Email accessed at current time"
-
-
-    validation message : "Invalid email address. Email not updated."
-
-
-    invalid email: invalid_email
-
-
-    valid email: danny@outlook.com
-
-    ```
-
-    '
+  question_text: "`Fill in the missing parts to complete the program with logging\
+    \ and validation in getters/setters:`\n\n```\nlogging message : \"Email accessed\
+    \ at current time\"\n\nvalidation message : \"Invalid email address. Email not\
+    \ updated.\"\n\nUser data : \nusername: dantheman\nemail: \"  DAN@GMAIL.com \"\
+    \npassword: 123 \n\ninvalid email: invalid_email\n\nvalid email: danny@outlook.com\n\
+    ```\n"
   question_code: "from datetime import datetime\n\nclass User:\n    def __init__(self,\
     \ username, email, password):\n        self.username = username\n        self.<<_email>>\
     \ = email  # protected attribute\n        self.password = password\n\n    def\

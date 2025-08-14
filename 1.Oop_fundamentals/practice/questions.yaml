@@ -538,8 +538,13 @@ questions:
 
       validation message : "Invalid email address. Email not updated."
 
+      User data : 
+      username: dantheman
+      email: "  DAN@GMAIL.com "
+      password: 123 
+
       invalid email: invalid_email
-      
+
       valid email: danny@outlook.com
       ```
     question_code: |
