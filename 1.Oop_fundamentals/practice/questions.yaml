@@ -309,6 +309,11 @@ questions:
         - Create a `User` object with extra spaces and uppercase letters in the email
         - Print the raw `_email` directly (to show it can still be accessed, but is not recommended)
         - Print the cleaned email using the `clean_email()` method (preferred approach)
+      Use the following data:
+      - Username: dantheman
+      - Email: "  Dan@GMAIL.com  "
+      - Password: 123
+      Ensure the output shows both the original and cleaned email.
 
       This will demonstrate the benefit of **controlled attribute access** for data cleaning.
     question_code: |

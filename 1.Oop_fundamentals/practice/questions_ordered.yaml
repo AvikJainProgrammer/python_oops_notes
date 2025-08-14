@@ -238,7 +238,9 @@ questions:
     \ your main code:\n  - Create a `User` object with extra spaces and uppercase\
     \ letters in the email\n  - Print the raw `_email` directly (to show it can still\
     \ be accessed, but is not recommended)\n  - Print the cleaned email using the\
-    \ `clean_email()` method (preferred approach)\n\nThis will demonstrate the benefit\
+    \ `clean_email()` method (preferred approach)\nUse the following data:\n- Username:\
+    \ dantheman\n- Email: \"  Dan@GMAIL.com  \"\n- Password: 123\nEnsure the output\
+    \ shows both the original and cleaned email.\n\nThis will demonstrate the benefit\
     \ of **controlled attribute access** for data cleaning.\n"
   question_code: "class User:\n    def __init__(self, username, email, password):\n\
     \        self.username = username\n        self._email = email\n        self.password\
