@@ -622,6 +622,7 @@ questions:
       - Username: dantheman
       - Email: dan@gmail.com
       - Password: 123
+      - New wront email :this is not an email
       When the email is accessed "Email accessed" should be printed, 
     question_code: |
       class User:
