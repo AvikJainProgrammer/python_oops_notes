@@ -461,6 +461,7 @@ questions:
       Use the following data:
       - Username: dantheman
       - Email: dan@outlook.com
+      - Email after update: danny@outlook.com
       - Password: 123
 
       Ensure the output shows the email before and after updating it.
@@ -501,6 +502,7 @@ questions:
       Use the following data:
       - Username: dantheman
       - Email: dan@outlook.com
+      - Email after update: danny@outlook.com
       - Password: 123
 
       Ensure the output shows the email before and after updating it.
