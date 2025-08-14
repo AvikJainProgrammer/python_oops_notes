@@ -270,6 +270,11 @@ questions:
       - Create an instance of `User` with sample values
       - Print the value of `_email` directly (to show it works but is not recommended)
       - Print the value of `_email` using `get_email()` (preferred way)
+      Use the following data:
+      - Username: dantheman
+      - Email: dan@gmail.com
+      - Password: 123
+      Ensure the output shows both methods of accessing the email.
     question_code: |
       class User:
           def __init__(self, username, email, password):

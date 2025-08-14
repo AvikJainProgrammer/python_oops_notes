@@ -209,6 +209,16 @@ questions:
 
     - Print the value of `_email` using `get_email()` (preferred way)
 
+    Use the following data:
+
+    - Username: dantheman
+
+    - Email: dan@gmail.com
+
+    - Password: 123
+
+    Ensure the output shows both methods of accessing the email.
+
     '
   question_code: "class User:\n    def __init__(self, username, email, password):\n\
     \        self.username = username\n        self._email = email\n        self.password\
