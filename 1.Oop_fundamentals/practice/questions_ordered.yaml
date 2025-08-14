@@ -472,8 +472,26 @@ questions:
 - question_id: 39
   question_type: code_fib
   language: python
-  question_text: Fill in the missing parts of the Python program using @property and
-    @<property>.setter for controlled attribute access.
+  question_text: 'Fill in the missing parts of the Python program using @property
+    and @<property>.setter for controlled attribute access.
+
+    Use the following data:
+
+    - Username: dantheman
+
+    - Email: dan@gmail.com
+
+    - Password: 123
+
+    - Getter message : "Email accessed at current time"
+
+    - Setter message : "Invalid email address: must contain ''@''"
+
+    - Invalid email: "this is not an email"
+
+    - Valid email: "danny@outlook.com"
+
+    '
   question_code: "from <<datetime>> import datetime\n\nclass User:\n    def __init__(self,\
     \ username, email, password):\n        <<self.username = username>>\n        <<self._email\
     \ = email>>  # Protected by convention\n        <<self.password = password>>\n\
@@ -495,7 +513,25 @@ questions:
     access time and returns the email. Add a setter method for `email` that checks
     if the value contains ''@'', updating the email if valid, or printing an error
     if invalid. Create a user with sample details, attempt to set an invalid email
-    and print the email, then set a valid email and print it again.'
+    and print the email, then set a valid email and print it again.
+
+    Use the following data:
+
+    - Username: dantheman
+
+    - Email: dan@gmail.com
+
+    - Password: 123
+
+    - Getter message : "Email accessed at current time"
+
+    - Setter message : "Invalid email address: must contain ''@''"
+
+    - Invalid email: "this is not an email"
+
+    - Valid email: "danny@outlook.com"
+
+    '
   question_code: "from datetime import datetime\n\nclass User:\n    def __init__(self,\
     \ username, email, password):\n        self.username = username\n        self._email\
     \ = email\n        self.password = password\n\n    @property\n    def email(self):\n\
