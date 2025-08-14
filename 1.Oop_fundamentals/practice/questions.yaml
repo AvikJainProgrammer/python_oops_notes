@@ -532,10 +532,16 @@ questions:
     language: python
     question_text: |
       `Fill in the missing parts to complete the program with logging and validation in getters/setters:`
-      logging message : "Email accessed at <current time>"
+
+      ```
+      logging message : "Email accessed at current time"
+
       validation message : "Invalid email address. Email not updated."
+
       invalid email: invalid_email
+      
       valid email: danny@outlook.com
+      ```
     question_code: |
       from datetime import datetime
 
