@@ -1,5 +1,5 @@
 questions:
-  - question_id: 4
+  - question_id: 0
     question_type: list_completion
     question_text: "List the topics studied in Python OOP fundamentals."
     answer: 
@@ -47,7 +47,7 @@ questions:
     question_code: |
       name = "Danny"
       print(name.upper())  # Output: DANNY
-    case_sensitive: false
+    case_sensitive: true
     guided: true
 
   - question_id: 5
@@ -209,6 +209,10 @@ questions:
       Then:
       - Create **two different Person objects** with different names and ages.
       - Call the `greet()` method on each object to demonstrate how the **same function** can behave differently for different objects of the same class.
+      - Use the following data:
+        - Person 1: Name: Alice, Age: 30
+        - Person 2: Name: Bob, Age: 42
+      Ensure the output shows the correct greeting for each person.
     question_code: |
       class Person:
           def __init__(self, name, age):

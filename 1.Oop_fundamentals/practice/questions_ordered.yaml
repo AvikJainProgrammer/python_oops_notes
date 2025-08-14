@@ -53,7 +53,7 @@ questions:
     print(name.upper())  # Output: DANNY
 
     '
-  case_sensitive: false
+  case_sensitive: true
   guided: true
 - question_id: 6
   question_type: write_code
@@ -151,23 +151,14 @@ questions:
 - question_id: 16
   question_type: write_code
   language: python
-  question_text: 'Create a `Person` class in Python with the following:
-
-    - An `__init__` method that accepts `name` and `age` and stores them as instance
-    attributes.
-
-    - A `greet()` method that prints: `"Hello, my name is <name> and I am <age> years
-    old."`
-
-
-    Then:
-
-    - Create **two different Person objects** with different names and ages.
-
-    - Call the `greet()` method on each object to demonstrate how the **same function**
-    can behave differently for different objects of the same class.
-
-    '
+  question_text: "Create a `Person` class in Python with the following:\n- An `__init__`\
+    \ method that accepts `name` and `age` and stores them as instance attributes.\n\
+    - A `greet()` method that prints: `\"Hello, my name is <name> and I am <age> years\
+    \ old.\"`\n\nThen:\n- Create **two different Person objects** with different names\
+    \ and ages.\n- Call the `greet()` method on each object to demonstrate how the\
+    \ **same function** can behave differently for different objects of the same class.\n\
+    - Use the following data:\n  - Person 1: Name: Alice, Age: 30\n  - Person 2: Name:\
+    \ Bob, Age: 42\nEnsure the output shows the correct greeting for each person.\n"
   question_code: "class Person:\n    def __init__(self, name, age):\n        self.name\
     \ = name\n        self.age = age\n\n    def greet(self):\n        print(f\"Hello,\
     \ my name is {self.name} and I am {self.age} years old.\")\n\nperson1 = Person(\"\
