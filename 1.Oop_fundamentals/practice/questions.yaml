@@ -616,7 +616,13 @@ questions:
   - question_id: 2
     question_type: write_code
     language: python
-    question_text: "Write a Python program that uses @property to access an attribute. Your class should have attributes for username, a protected email, and password, include a property method to return the email with a print statement when accessed, create a user with your own details, and print the email."
+    question_text: |
+      Write a Python program that uses @property to access an attribute. Your class should have attributes for username, a protected email, and password, include a property method to return the email with a print statement when accessed, create a user with your own details, and print the email.
+      Use the following data:
+      - Username: dantheman
+      - Email: dan@gmail.com
+      - Password: 123
+      When the email is accessed "Email accessed" should be printed, 
     question_code: |
       class User:
           def __init__(self, username, email, password):
@@ -631,7 +637,7 @@ questions:
 
       user1 = User("dantheman", "dan@gmail.com", "123")
       print(user1.email)
-      user1.email = "this is not an email"
+      user1.email = "this is not an email" # This will raise an AttributeError
     case_sensitive: true
     guided: true
 
