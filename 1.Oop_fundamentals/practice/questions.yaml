@@ -488,7 +488,7 @@ questions:
       print(user1.get_email())  # Output: danny@outlook.com
     guided: true
   - question_id: 26
-    question_type: fill_in_the_blank
+    question_type: code_fib
     language: python
     question_text: |
       Complete the code to create a Python class with a protected `_email` attribute and getter/setter methods.
