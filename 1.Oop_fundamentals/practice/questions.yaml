@@ -457,6 +457,13 @@ questions:
       6. Use the getter method to **print the email**.
       7. Use the setter method to **update the email**.
       8. Use the getter again to **print the updated email**.
+
+      Use the following data:
+      - Username: dantheman
+      - Email: danny@outlook.com
+      - Password: 123
+
+      Ensure the output shows the email before and after updating it.
     question_code: |
       class User:
           def __init__(self, username, email, password):
@@ -490,6 +497,13 @@ questions:
       3. Create `get_email()` to return `_email`.
       4. Create `set_email(new_email)` to update `_email`.
       5. Instantiate the class and demonstrate reading and updating the email.
+
+      Use the following data:
+      - Username: dantheman
+      - Email: danny@outlook.com
+      - Password: 123
+
+      Ensure the output shows the email before and after updating it.
     question_code: |
       class User:
           def __init__(self, username, email, password):
