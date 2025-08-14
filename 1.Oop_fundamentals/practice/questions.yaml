@@ -608,8 +608,8 @@ questions:
       # Accessing email via property
       <<print(user1.email)>>
 
-      # Attempting to set directly (this will still work because setter not defined yet)
-      <<user1.email = "this is not an email">>  # <<This will raise an AttributeError>>
+      # Attempting to set directly 
+      <<user1.email = "this is not an email">>  # This will <<raise an AttributeError>> Email to use: to use "this is not an email"
     case_sensitive: true
     guided: true
 

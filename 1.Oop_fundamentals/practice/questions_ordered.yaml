@@ -431,9 +431,9 @@ questions:
     \    def email(self):\n        <<print(\"Email accessed\")>>\n        <<return\
     \ self._email>>\n\n\n# Creating a user\n<<user1 = User(\"dantheman\", \"dan@gmail.com\"\
     , \"123\")>> # Used dantheman, dan@gmail.com and 123\n\n# Accessing email via\
-    \ property\n<<print(user1.email)>>\n\n# Attempting to set directly (this will\
-    \ still work because setter not defined yet)\n<<user1.email = \"this is not an\
-    \ email\">>  # <<This will raise an AttributeError>>\n"
+    \ property\n<<print(user1.email)>>\n\n# Attempting to set directly \n<<user1.email\
+    \ = \"this is not an email\">>  # This will <<raise an AttributeError>> Email\
+    \ to use: to use \"this is not an email\"\n"
   case_sensitive: true
   guided: true
 - question_id: 36
