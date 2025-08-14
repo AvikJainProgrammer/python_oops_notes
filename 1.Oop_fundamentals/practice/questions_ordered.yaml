@@ -184,7 +184,7 @@ questions:
   language: python
   question_text: Fill in the missing parts to make the `email` attribute protected
     in the `User` class.
-  question_code: "class User:\n    def __init__(self, username, <<_email>>, password):\n\
+  question_code: "class User:\n    def __init__(self, username, <<email>>, password):\n\
     \        self.username = username\n        self.<<_email>> = email\n        self.password\
     \ = password\n\n    def get_email(self):\n        return self.<<_email>>\n"
   case_sensitive: true

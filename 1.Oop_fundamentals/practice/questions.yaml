@@ -248,7 +248,7 @@ questions:
     question_text: "Fill in the missing parts to make the `email` attribute protected in the `User` class."
     question_code: |
       class User:
-          def __init__(self, username, <<_email>>, password):
+          def __init__(self, username, <<email>>, password):
               self.username = username
               self.<<_email>> = email
               self.password = password
