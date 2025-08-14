@@ -460,7 +460,7 @@ questions:
 
       Use the following data:
       - Username: dantheman
-      - Email: danny@outlook.com
+      - Email: dan@outlook.com
       - Password: 123
 
       Ensure the output shows the email before and after updating it.
@@ -500,7 +500,7 @@ questions:
 
       Use the following data:
       - Username: dantheman
-      - Email: danny@outlook.com
+      - Email: dan@outlook.com
       - Password: 123
 
       Ensure the output shows the email before and after updating it.

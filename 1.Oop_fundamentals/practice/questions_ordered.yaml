@@ -340,8 +340,8 @@ questions:
     5. Create an object of the `User` class.\n6. Use the getter method to **print\
     \ the email**.\n7. Use the setter method to **update the email**.\n8. Use the\
     \ getter again to **print the updated email**.\n\nUse the following data:\n- Username:\
-    \ dantheman\n- Email: danny@outlook.com\n- Password: 123\n\nEnsure the output\
-    \ shows the email before and after updating it.\n"
+    \ dantheman\n- Email: dan@outlook.com\n- Password: 123\n\nEnsure the output shows\
+    \ the email before and after updating it.\n"
   question_code: "class User:\n    def __init__(self, username, email, password):\n\
     \        self.username = username\n        self._email = email\n        self.password\
     \ = password\n\n    def get_email(self):\n        return self._email\n\n    def\
@@ -373,7 +373,7 @@ questions:
 
     - Username: dantheman
 
-    - Email: danny@outlook.com
+    - Email: dan@outlook.com
 
     - Password: 123
 
