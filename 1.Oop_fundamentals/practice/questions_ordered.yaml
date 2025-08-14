@@ -286,7 +286,8 @@ questions:
     \ to print `__email` directly (should raise `AttributeError`)\n  - Access the\
     \ same variable using its **name-mangled form** (not recommended, but possible)\n\
     Use the following data:\n- Username: alice\n- Email: alice@example.com\n- Password:\
-    \ pass123\n"
+    \ pass123\ndisplay `Cannot access __email directly` if an error occurs.\nEnsure\
+    \ the output shows both attempts to access the email.\n"
   question_code: "class User:\n    def __init__(self, username, email, password):\n\
     \        self.username = username\n        self.__email = email\n        self.password\
     \ = password\n\nuser = User(\"alice\", \"alice@example.com\", \"pass123\")\n\n\

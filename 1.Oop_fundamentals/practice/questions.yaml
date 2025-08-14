@@ -380,7 +380,8 @@ questions:
       - Username: alice
       - Email: alice@example.com
       - Password: pass123
-      
+      display `Cannot access __email directly` if an error occurs.
+      Ensure the output shows both attempts to access the email.
     question_code: |
       class User:
           def __init__(self, username, email, password):
