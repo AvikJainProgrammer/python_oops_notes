@@ -284,7 +284,9 @@ questions:
     \ attribute: `username`\n  - Private attribute: `__email`\n  - Public attribute:\
     \ `password`\n2. In your code:\n  - Create an instance of `User`\n  - Attempt\
     \ to print `__email` directly (should raise `AttributeError`)\n  - Access the\
-    \ same variable using its **name-mangled form** (not recommended, but possible)\n"
+    \ same variable using its **name-mangled form** (not recommended, but possible)\n\
+    Use the following data:\n- Username: alice\n- Email: alice@example.com\n- Password:\
+    \ pass123\n"
   question_code: "class User:\n    def __init__(self, username, email, password):\n\
     \        self.username = username\n        self.__email = email\n        self.password\
     \ = password\n\nuser = User(\"alice\", \"alice@example.com\", \"pass123\")\n\n\

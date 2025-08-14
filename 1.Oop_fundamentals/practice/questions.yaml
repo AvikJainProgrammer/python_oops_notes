@@ -376,6 +376,11 @@ questions:
         - Create an instance of `User`
         - Attempt to print `__email` directly (should raise `AttributeError`)
         - Access the same variable using its **name-mangled form** (not recommended, but possible)
+      Use the following data:
+      - Username: alice
+      - Email: alice@example.com
+      - Password: pass123
+      
     question_code: |
       class User:
           def __init__(self, username, email, password):
