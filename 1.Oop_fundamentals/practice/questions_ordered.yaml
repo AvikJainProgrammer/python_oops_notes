@@ -428,7 +428,7 @@ questions:
   question_code: "class User:\n    def __init__(self, username, email, password):\n\
     \        <<self.username = username>>\n        <<self._email = email>>  # Protected\
     \ by <<convention>>\n        <<self.password = password>>\n\n    <<@property>>\n\
-    \    def email(self):\n        <<print(\"Email accessed\")>>\n        <<return\
+    \    def <<email>>(self):\n        <<print(\"Email accessed\")>>\n        <<return\
     \ self._email>>\n\n\n# Creating a user\n<<user1 = User(\"dantheman\", \"dan@gmail.com\"\
     , \"123\")>> # Used dantheman, dan@gmail.com and 123\n\n# Accessing email via\
     \ property\n<<print(user1.email)>>\n\n# Attempting to set directly \n<<user1.email\
@@ -495,11 +495,11 @@ questions:
   question_code: "from <<datetime>> import datetime\n\nclass User:\n    def __init__(self,\
     \ username, email, password):\n        <<self.username = username>>\n        <<self._email\
     \ = email>>  # Protected by convention\n        <<self.password = password>>\n\
-    \n    <<@property>>\n    def email(self):\n        <<print(f\"Email accessed at\
-    \ {datetime.now()}\")>>\n        <<return self._email>>\n\n    <<@email.setter>>\n\
-    \    def email(self, new_email):\n        <<if \"@\" in new_email:>>\n       \
-    \     <<self._email = new_email>>\n        <<else:>>\n            <<print(\"Invalid\
-    \ email address: must contain '@'\")>>\n\n# Creating a user\n<<user1 = User(\"\
+    \n    <<@property>>\n    def <<email>>(self):\n        <<print(f\"Email accessed\
+    \ at {datetime.now()}\")>>\n        <<return self._email>>\n\n    <<@email.setter>>\n\
+    \    def <<email>>(self, new_email):\n        <<if \"@\" in new_email:>>\n   \
+    \         <<self._email = new_email>>\n        <<else:>>\n            <<print(\"\
+    Invalid email address: must contain '@'\")>>\n\n# Creating a user\n<<user1 = User(\"\
     dantheman\", \"dan@gmail.com\", \"123\")>>\n\n# Try setting an invalid email\n\
     <<user1.email = \"this is not an email\">>\n<<print(user1.email)>>\n\n# Try setting\
     \ a valid email\n<<user1.email = \"danny@outlook.com\">>\n<<print(user1.email)>>\n"
