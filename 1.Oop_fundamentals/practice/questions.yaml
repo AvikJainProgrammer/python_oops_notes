@@ -871,7 +871,7 @@ questions:
 
           <<@staticmethod>>
           <<def is_valid_interest_rate(rate):>>  # Static method
-              <<return 0 &lt;= rate &lt;= 5>>
+              <<return 0 <= rate <= 5>>
 
       <<account = BankAccount("Alice", 500)>>
       <<account.deposit(200)>>  # Instance method

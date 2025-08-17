@@ -660,7 +660,7 @@ questions:
     \            print(f\"{self.owner}'s new balance: ${self._balance}\")\n      \
     \  else:\n            print(\"Deposit amount must be positive.\")\n\n    <<@staticmethod>>\n\
     \    <<def is_valid_interest_rate(rate):>>  # Static method\n        <<return\
-    \ 0 &lt;= rate &lt;= 5>>\n\n<<account = BankAccount(\"Alice\", 500)>>\n<<account.deposit(200)>>\
+    \ 0 <= rate <= 5>>\n\n<<account = BankAccount(\"Alice\", 500)>>\n<<account.deposit(200)>>\
     \  # Instance method\n\n<<print(BankAccount.is_valid_interest_rate(3))>>   # \u2705\
     \ True\n<<print(BankAccount.is_valid_interest_rate(10))>>  # \u274C False\n"
 - question_id: 50
