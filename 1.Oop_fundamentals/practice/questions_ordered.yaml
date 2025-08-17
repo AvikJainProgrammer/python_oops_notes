@@ -139,7 +139,7 @@ questions:
     \ 2: Name: Freya, Breed: Greyhound, Owner: Owner 2\nEnsure the output shows the\
     \ owner's name for each dog.\n"
   question_code: "class Owner:\n    def __init__(self, name, address, contact_number):\n\
-    \        self.name = name\n        self.address = address\n        self.phone_number\
+    \      self.name = name\n        self.address = address\n        self.phone_number\
     \ = contact_number\n\nclass Dog:\n    def __init__(self, name, breed, owner):\n\
     \        self.name = name\n        self.breed = breed\n        self.owner = owner\n\
     \n    def bark(self):\n        print(\"Woof woof\")\n\nowner1 = Owner(\"Danny\"\
@@ -675,14 +675,14 @@ questions:
     \ `False`\nAfter defining the class:\n- Create an account for `\"Alice\"` with\
     \ starting balance `500`\n- Call `deposit(200)` on the account\n- Print the result\
     \ of `BankAccount.is_valid_interest_rate(3)`\n- Print the result of `BankAccount.is_valid_interest_rate(10)`\n"
-  question_code: "class BankAccount:\n  MIN_BALANCE = 100\n\n  def __init__(self,\
-    \ owner, balance=0):\n      self.owner = owner\n      self._balance = balance\n\
-    \n  def deposit(self, amount):\n      if amount > 0:\n          self._balance\
-    \ += amount\n          print(f\"{self.owner}'s new balance: ${self._balance}\"\
-    )\n      else:\n          print(\"Deposit amount must be positive.\")\n\n  @staticmethod\n\
-    \  def is_valid_interest_rate(rate):  # Static method\n  return 0 &lt;= rate &lt;=\
-    \ 5\n\naccount = BankAccount(\"Alice\", 500)\naccount.deposit(200)\n\nprint(BankAccount.is_valid_interest_rate(3))\n\
-    print(BankAccount.is_valid_interest_rate(10))\n"
+  question_code: "class BankAccount:\n    MIN_BALANCE = 100\n\n    def __init__(self,\
+    \ owner, balance=0):\n        self.owner = owner\n        self._balance = balance\n\
+    \n    def deposit(self, amount):\n        if amount > 0:\n            self._balance\
+    \ += amount\n            print(f\"{self.owner}'s new balance: ${self._balance}\"\
+    )\n        else:\n            print(\"Deposit amount must be positive.\")\n\n\
+    \    @staticmethod\n    def is_valid_interest_rate(rate):  \n        return 0\
+    \ <= rate <= 5\n\naccount = BankAccount(\"Alice\", 500)\naccount.deposit(200)\n\
+    \nprint(BankAccount.is_valid_interest_rate(3))\nprint(BankAccount.is_valid_interest_rate(10))\n"
   case_sensitive: true
   guided: true
 - question_id: 51
