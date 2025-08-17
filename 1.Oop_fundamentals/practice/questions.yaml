@@ -843,11 +843,11 @@ questions:
     question_type: code_fib
     question_text: |
       Fill in the missing code parts for the BankAccount class. 
-      Static attribute `MIN_BALANCE` should be set to `100`. 
-      deposit method should add the amount to `_balance` if positive and print the new balance. 
-      message for deposit should be "`<owner>`'s new balance: $<balance>`". 
-      if the amount is not positive, it should print `"Deposit amount must be positive."` 
-      the static method `is_valid_interest_rate(rate)` should return `True` if `rate` is between `0` and `5` inclusive, otherwise `False`. 
+      Static attribute MIN_BALANCE should be set to 100. 
+      deposit method should add the amount to _balance if positive and print the new balance. 
+      message for deposit should be <owner>'s new balance: $<balance>. 
+      if the amount is not positive, it should print Deposit amount must be positive. 
+      the static method is_valid_interest_rate(rate) should return True if rate is between 0 and 5 inclusive, otherwise False. 
       Use the following data: 
       - Owner: Alice
       - Starting balance: 500
