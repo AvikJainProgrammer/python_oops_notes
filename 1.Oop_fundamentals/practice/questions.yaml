@@ -747,7 +747,14 @@ questions:
   - question_id: 8
     question_type: code_fib
     language: python
-    question_text: "Fill in the missing parts of the Python program that uses a static (class) attribute to track the number of User instances created."
+    question_text: |
+      Fill in the missing parts of the Python program that uses a static (class) attribute to track the number of User instances created.
+      user user_cout as a static attributes
+      Use the following data:
+      - Username: dantheman
+      - Email: dan@gmail.com
+      - Username: sally123
+      - Email: sally@gmail.com
     question_code: |
       class User:
           <<user_count = 0>>  # Static / Class attribute
