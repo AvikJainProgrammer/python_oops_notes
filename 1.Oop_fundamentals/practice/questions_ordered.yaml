@@ -674,7 +674,7 @@ questions:
     \ that:\n  - Returns `True` if `rate` is between `0` and `5` inclusive, otherwise\
     \ `False`\nAfter defining the class:\n- Create an account for `\"Alice\"` with\
     \ starting balance `500`\n- Call `deposit(200)` on the account\n- Print the result\
-    \ of `BankAccount.is_valid_interest_rate(3)`\n- Print the result of `BankAccount.is_valid_interest_rate(10)`\n"
+    \ of `is_valid_interest_rate(3)`\n- Print the result of `is_valid_interest_rate(10)`\n"
   question_code: "class BankAccount:\n    MIN_BALANCE = 100\n\n    def __init__(self,\
     \ owner, balance=0):\n        self.owner = owner\n        self._balance = balance\n\
     \n    def deposit(self, amount):\n        if amount > 0:\n            self._balance\

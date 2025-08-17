@@ -894,8 +894,8 @@ questions:
       After defining the class:
       - Create an account for `"Alice"` with starting balance `500`
       - Call `deposit(200)` on the account
-      - Print the result of `BankAccount.is_valid_interest_rate(3)`
-      - Print the result of `BankAccount.is_valid_interest_rate(10)`
+      - Print the result of `is_valid_interest_rate(3)`
+      - Print the result of `is_valid_interest_rate(10)`
     question_code: |
       class BankAccount:
           MIN_BALANCE = 100
