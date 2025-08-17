@@ -645,7 +645,33 @@ questions:
   correct_answer: ClassName.attribute
 - question_id: 49
   question_type: code_fib
-  question_text: Fill in the missing code parts for the BankAccount class.
+  question_text: 'Fill in the missing code parts for the BankAccount class.
+
+    Static attribute `MIN_BALANCE` should be set to `100`.
+
+    deposit method should add the amount to `_balance` if positive and print the new
+    balance.
+
+    message for deposit should be "`<owner>`''s new balance: $<balance>`".
+
+    if the amount is not positive, it should print `"Deposit amount must be positive."`
+
+    the static method `is_valid_interest_rate(rate)` should return `True` if `rate`
+    is between `0` and `5` inclusive, otherwise `False`.
+
+    Use the following data:
+
+    - Owner: Alice
+
+    - Starting balance: 500
+
+    - Deposit amount: 200
+
+    - Valid interest rate: 3
+
+    - Invalid interest rate: 10
+
+    '
   question_code: "class BankAccount:\n    <<MIN_BALANCE = 100>>  # Static (class-level)\
     \ attribute \n\n    def __init__(self, owner, balance=0):\n        <<self.owner\
     \ = owner>>\n        <<self._balance = balance>>\n\n    def deposit(self, amount):\
@@ -653,7 +679,7 @@ questions:
     \            print(f\"{self.owner}'s new balance: ${self._balance}\")\n      \
     \  else:\n            print(\"Deposit amount must be positive.\")\n\n    <<@staticmethod>>\n\
     \    <<def is_valid_interest_rate(rate):>>  # Static method\n        <<return\
-    \ 0 <= rate <= 5>>\n\n<<account = BankAccount(\"Alice\", 500)>>\n<<account.deposit(200)>>\
+    \ 0 &lt= rate &lt= 5>>\n\n<<account = BankAccount(\"Alice\", 500)>>\n<<account.deposit(200)>>\
     \  # Instance method\n\n<<print(BankAccount.is_valid_interest_rate(3))>>   # \u2705\
     \ True\n<<print(BankAccount.is_valid_interest_rate(10))>>  # \u274C False\n"
 - question_id: 50
