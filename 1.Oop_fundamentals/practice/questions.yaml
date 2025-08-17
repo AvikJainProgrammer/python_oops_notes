@@ -948,7 +948,6 @@ questions:
   - question_id: 11
     question_type: fib
     question_text: "To define a static method in Python, you use the <<@staticmethod>> decorator."
-    answer: "@staticmethod"
     case_sensitive: true
     guided: true
 
